@@ -10,7 +10,10 @@ namespace polis.tjuv2
     {
         //Movement
         public int Movement { get; set; }
-        
+
+        public int Ydirection { get; set; }
+
+        public int Xdirection { get; set; }
         //Inventory
         public List<Item> Inventory { get; set; }
 
@@ -18,10 +21,11 @@ namespace polis.tjuv2
         {
             Random random = new Random();
             Movement = random.Next(0,6);
+            Inventory = new List<Item>();
             
         }
 
-       public void Move()
+       public   void Move( )
         {
             switch(Movement)
             {
@@ -33,6 +37,12 @@ namespace polis.tjuv2
 
         }
 
+         
+
+        public virtual  void Removefrominventory(Item item)
+        {
+            Inventory.Remove(item);
+        }
     }
 
    

@@ -15,9 +15,18 @@ namespace polis.tjuv2
         public Thief()
         {
 
-            
+             
 
         }
+       
+        public override void Removefrominventory(Item item)
+        {
+            Inventory.Remove(item);
+        }
 
+
+         
     }
+
+    
 }
