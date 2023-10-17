@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int policeNmr = 10;
+            int citizenNmr = 30;
+            int criminalNmr = 20;
+
+
+
         }
     }
 }
