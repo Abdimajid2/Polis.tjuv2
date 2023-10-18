@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace polis.tjuv2
 {
-    public class Police : Person
-    {
+    //public class Police : Person
+    //{
 
 
-        public Police()
-        {
+    //    public Police()
+    //    {
             
-        }
+    //    }
 
         
 
 
-    }
+    //}
 
 
     

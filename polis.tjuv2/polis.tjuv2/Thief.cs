@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace polis.tjuv2
 {
-    public class Thief : Person
-    {
+    //public class Thief : Person
+    //{
 
-        public bool Prison { get; set; }
+    //    public bool Prison { get; set; }
 
 
-        public Thief()
-        {
+    //    public Thief()
+    //    {
 
              
 
-        }
+    //    }
        
-        public override void Removefrominventory(Item item)
-        {
-            Inventory.Remove(item);
-        }
+    //    public override void Removefrominventory(Item item)
+    //    {
+    //        Inventory.Remove(item);
+    //    }
 
 
          
-    }
+    //}
 
     
 }
