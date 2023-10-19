@@ -7,29 +7,28 @@ using System.Threading.Tasks;
 
 namespace polis.tjuv2
 {
-    //public class Citizen : Person
-    //{
+    public class Citizen : Person
+    {
 
+       
 
-    //    public Citizen()
-    //    {
-
-    //        Inventory = new List<Item> // här förvaras medborgarens saker i en lista.
-    //        {
-    //         new Item("nycklar"),
-    //         new Item("plånbok"),
-    //         new Item("klocka"),
-    //         new Item("mobiltelefon"),
-
-
-    //        };
+        public Citizen()
+        {
 
 
 
 
+            List<Item> belongings = new List<Item>();  // här förvaras medborgarens saker i en lista.
 
-    //    }
+            Inventory.Add(new Item("nycklar"));
+            belongings.Add(new Item("plånbok"));
+            belongings.Add(new Item("mobil"));
+
+           
 
 
-    //}
+        }
+
+
+    }
 }

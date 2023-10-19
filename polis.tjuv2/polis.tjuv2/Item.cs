@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace polis.tjuv2
 {
-    public class Item 
+    public class Item
     {
-        public string Name { get; set; }
+        public string ItemName { get; set; }
 
-       
+        public Item(string itemName)
+        {
+            ItemName = itemName;
+        }
+
     }
 }

@@ -13,7 +13,8 @@ namespace polis.tjuv2
 
         public int LeftDirection { get; set; }
 
-      
+
+       
 
         public int TopPosition { get; set; }
 
@@ -26,7 +27,7 @@ namespace polis.tjuv2
 
 
 
-        public Person( )
+        public Person()
         {
             Random random = new Random();
             TopDirection = random.Next(-1,2);
@@ -36,7 +37,8 @@ namespace polis.tjuv2
             LeftPosition = random.Next(0,101);
             Inventory = new List<Item>();
               
-            
+           
+
         }
       
        public void Move()
@@ -65,31 +67,8 @@ namespace polis.tjuv2
 
 
             {
-                //Direction = random.Next(0, 6);
-                //switch (Direction)
-                //{
-                //    case 0:
-                //        x -= 1;
-                //        break;
-                //    case 1:
-                //        y += 1;
-                //        break;
-                //    case 2:
-                //        x += 1;
-                //        break;
-                //    case 3:
-                //        y -= 1;
-                //        break;
-                //    case 4:
-                //        x = 0;
-                //        break;
-                //    case 5:
-                //        y = 0;
-                //        break;
-
-
-
-                //}
+                 
+                 
                 for (int i = 0; i < y; i++)
                 {
                     for (int j = 0; j < x; j++)
