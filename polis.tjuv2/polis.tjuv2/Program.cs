@@ -22,17 +22,21 @@ namespace polis.tjuv2
 
             while (true)
             {
-               
+             
 
                 foreach (Person person in city)
 
                 {
-
+                    
                     person.Move();
-                    Console.WriteLine(person.TopPosition + " " + person.LeftPosition);
+                    Console.WriteLine(person.TopPosition + " " + person.LeftPosition +" "+ person.GetType().Name );
                     int x = 0;
                 }
 
+            
+                
+                
+               
                 Console.ReadKey();
                 Console.Clear();
             }
