@@ -19,10 +19,9 @@ namespace polis.tjuv2
         public int TopPosition { get; set; }
 
         public int LeftPosition { get; set; }
-      
+
         public List<Item> Inventory { get; set; }
 
-        
 
 
 
@@ -32,7 +31,7 @@ namespace polis.tjuv2
             Random random = new Random();
             TopDirection = random.Next(-1,2);
             LeftDirection = random.Next(-1,2);
-        
+             //Storlek på staden :)
             TopPosition = random.Next(0,26);
             LeftPosition = random.Next(0,101);
             Inventory = new List<Item>();
@@ -40,6 +39,15 @@ namespace polis.tjuv2
            
 
         }
+        public virtual void ShowList()
+        { 
+           
+
+
+           
+
+        }
+     
       
        public void Move()
         {

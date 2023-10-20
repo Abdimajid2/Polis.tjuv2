@@ -15,21 +15,56 @@ namespace polis.tjuv2
 
             List<Person> city = new List<Person>();
 
-            city.Add(new Person());
-            city.Add(new Person());
-            city.Add(new Person());
+            city.Add(new Thief());
             city.Add(new Citizen());
+            city.Add(new Police());
+            city.Add(new Thief());
+            city.Add(new Citizen());
+            city.Add(new Police());
+            city.Add(new Thief());
+            city.Add(new Citizen());
+            city.Add(new Police());
+            city.Add(new Thief());
+            city.Add(new Citizen());
+            city.Add(new Police());
+            city.Add(new Thief());
+            city.Add(new Citizen());
+            city.Add(new Police());
+            city.Add(new Thief());
+            city.Add(new Citizen());
+            city.Add(new Police());
+
 
             while (true)
             {
-             
+
 
                 foreach (Person person in city)
 
                 {
-                    
+
                     person.Move();
-                    Console.WriteLine(person.TopPosition + " " + person.LeftPosition +" "+ person.GetType().Name );
+                    if (person is Citizen)
+                    {
+                        Console.Write(person.GetType().Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        person.ShowList();
+                        Console.WriteLine();
+                    }
+                    if (person is Police)
+                    {
+                        Console.Write(person.GetType().Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        person.ShowList();
+                        Console.WriteLine();
+                    }
+                    if (person is Thief)
+                    {
+                        Console.Write(person.GetType().Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        person.ShowList();
+                        Console.WriteLine();
+                    }
+                    //Console.WriteLine(person.GetType().Name + " " + person.TopPosition + " " + person.LeftPosition + " "); 
+
+
                     int x = 0;
                 }
 
