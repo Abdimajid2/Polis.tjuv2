@@ -41,13 +41,11 @@ namespace polis.tjuv2
         }
         public virtual void ShowList()
         { 
-           
-
-
-           
-
         }
-     
+        
+        public virtual void Meet() 
+        { 
+        }
       
        public void Move()
         {
