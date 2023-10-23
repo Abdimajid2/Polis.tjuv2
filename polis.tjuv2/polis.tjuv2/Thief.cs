@@ -24,6 +24,7 @@ namespace polis.tjuv2
 
             StolenGoods = stolenGoods;
 
+            Character = 'T';
 
 
         }
@@ -46,12 +47,13 @@ namespace polis.tjuv2
                     //Console.WriteLine("tjuv har träffat en person");
                     if (person is Thief)
                     {
-                        //Console.WriteLine("det är en tjuv");
+                        
                     }
                     else if (person is Citizen)
                     {
                         //Console.WriteLine("det är en medborgare");
                         Citizen citizen = (Citizen)person; // MÅSTE CASTA OM PERSON TILL EN CITIZEN FÖR ATT KOMMA ÅT SUBKLASS PROP
+
 
                         if (citizen.Belongings.Count > 0) // KOLLAR OM CITIZEN HAR BELONGINGS KVAR
                         {
@@ -59,7 +61,7 @@ namespace polis.tjuv2
                             int targetitem = random.Next(0,citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
                             this.StolenGoods.Add(citizen.Belongings[targetitem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
                             citizen.Belongings.RemoveAt(targetitem); // TAR BORT BELONGING FRÅN CITIZEN
-
+                            
                         }
 
                     }

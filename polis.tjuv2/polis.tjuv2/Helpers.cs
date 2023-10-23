@@ -49,26 +49,7 @@ namespace polis.tjuv2
             int rnd = random.Next(allNames.Length-1);
             return allNames[rnd];
         }
-        //public static List <Person> FillInventory()
-        //{
-        //    List <Person> belongings = new List <Person>();
-
-        //    belongings.Add
-
-        //}
-
-
-        //public static List <Medborgare> FillCity(int citizenSize)
-        //{
-        //    List <Medborgare> city = new List <Medborgare>();
-
-        //    for(int i = 0; i <= citizenSize; i++)
-        //    {
-        //        Medborgare citizen = new Medborgare(33);
-
-        //        city.Add(citizen);
-        //    }
-        //    return city;
-        //}
+         
+         
     }
 }

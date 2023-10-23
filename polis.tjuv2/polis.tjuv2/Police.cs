@@ -18,7 +18,7 @@ namespace polis.tjuv2
 
             Confiscated = confiscated;
 
-
+            Character = 'P';
         }
 
         public override void ShowList()

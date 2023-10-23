@@ -13,8 +13,8 @@ namespace polis.tjuv2
 
         public int LeftDirection { get; set; }
 
-
-       
+        public char Character { get; set; }
+        public string Name { get; set; }
 
         public int TopPosition { get; set; }
 
@@ -35,8 +35,8 @@ namespace polis.tjuv2
             TopPosition = random.Next(0,26);
             LeftPosition = random.Next(0,101);
             Inventory = new List<Item>();
-              
-           
+
+             
 
         }
         public virtual void ShowList()

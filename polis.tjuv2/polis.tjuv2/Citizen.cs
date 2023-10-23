@@ -17,7 +17,7 @@ namespace polis.tjuv2
         {
 
 
-
+            Character = 'C';
 
           List<Item> belongings= new List<Item>();  // här förvaras medborgarens saker i en lista.
          
