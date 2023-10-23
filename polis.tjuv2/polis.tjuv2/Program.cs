@@ -10,29 +10,23 @@ namespace polis.tjuv2
             int policeNmr = 10;
             int citizenNmr = 30;
             int criminalNmr = 20;
-              
 
-
+           
             List<Person> city = new List<Person>();
 
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
-            city.Add(new Thief());
-            city.Add(new Citizen());
-            city.Add(new Police());
+            for (int i = 0; i < 10; i++)
+            {
+                city.Add(new Police());
+            }
+            for (int c = 0; c < 10; c++)
+            {
+                city.Add(new Citizen());
+            }
+            for(int t = 0; t < 10; t++)
+            {
+                city.Add(new Thief());
+            }
+            
 
 
             while (true)
@@ -67,12 +61,16 @@ namespace polis.tjuv2
 
                     int x = 0;
                 }
+                foreach (Person person in city)
+                {
+                    person.Meet(city);
 
-            
-                
-                
-               
-                Console.ReadKey();
+                }
+
+
+
+                Thread.Sleep(100); // GJORDE EN ANNAN UPPDATERINGSMETOD
+                //Console.ReadKey();
                 Console.Clear();
             }
         }

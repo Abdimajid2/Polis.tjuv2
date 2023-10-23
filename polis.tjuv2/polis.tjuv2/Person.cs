@@ -42,15 +42,33 @@ namespace polis.tjuv2
         public virtual void ShowList()
         { 
         }
-        
-        public virtual void Meet() 
-        { 
+
+        public virtual void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        {
         }
-      
-       public void Move()
+
+        public void Move()
         {
             TopPosition = TopPosition + TopDirection ;
             LeftPosition = LeftPosition + LeftDirection ;
+
+            // ÄNDRA TILL EN SWITCH, HÅLLER PERSONEN INNANFÖR SPELPLANEN
+            if (TopPosition < 0)
+            {
+                TopPosition = 25;
+            }
+            else if (TopPosition > 25)
+            {
+                TopPosition = 0;
+            }
+            if (LeftPosition < 0)
+            {
+                LeftPosition = 100;
+            }
+            else if (LeftPosition > 100)
+            {
+                LeftPosition = 0;
+            }
         }
 
 
