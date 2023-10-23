@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace polis.tjuv2
 {
@@ -44,14 +45,11 @@ namespace polis.tjuv2
             {
                 if (this.TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
                 {
-                    //Console.WriteLine("tjuv har träffat en person");
-                    if (person is Thief)
+                                     
+                    if (person is Citizen)
                     {
-                        
-                    }
-                    else if (person is Citizen)
-                    {
-                        //Console.WriteLine("det är en medborgare");
+                        Console.SetCursorPosition(0, 27);
+                        Console.WriteLine("En tjuv har rånat en medborgare!!!");
                         Citizen citizen = (Citizen)person; // MÅSTE CASTA OM PERSON TILL EN CITIZEN FÖR ATT KOMMA ÅT SUBKLASS PROP
 
 
@@ -65,11 +63,8 @@ namespace polis.tjuv2
                         }
 
                     }
-                    else if (person is Police)
-                    {
-                        //Console.WriteLine("det är en polis");
-                    }
-
+                    
+                    Thread.Sleep(2000);
                 }
             }
 

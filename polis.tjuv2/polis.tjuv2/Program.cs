@@ -18,11 +18,11 @@ namespace polis.tjuv2
             {
                 city.Add(new Police());
             }
-            for (int c = 0; c < 5; c++)
+            for (int c = 0; c < 10; c++)
             {
                 city.Add(new Citizen());
             }
-            for (int t = 0; t < 5; t++)
+            for (int t = 0; t < 10; t++)
             {
                 city.Add(new Thief());
             }
@@ -113,7 +113,7 @@ namespace polis.tjuv2
 
 
 
-                Thread.Sleep(100); // GJORDE EN ANNAN UPPDATERINGSMETOD
+                Thread.Sleep(1); // GJORDE EN ANNAN UPPDATERINGSMETOD
                 //Console.ReadKey();
                 //Console.Clear();
             }

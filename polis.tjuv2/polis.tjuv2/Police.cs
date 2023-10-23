@@ -36,20 +36,22 @@ namespace polis.tjuv2
             {
                 if (this.TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
                 {
-                    //Console.WriteLine("tjuv har träffat en person");
+                    
                     if (person is Thief)
                     {
-                        //Console.WriteLine("det är en tjuv");
+                        
 
                         Thief thief = (Thief)person;
 
                         if (thief.StolenGoods.Count > 0)
                         {
-
-                             Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
-
-
+                            Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
+                            Console.SetCursorPosition(0, 27);
+                            Console.Write("Polisen har fångat en tjuv som hade tagit ");
+                            ShowList();
+                            Console.WriteLine();
                             thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
+                            int x = 0;
                             //Console.WriteLine("polisen träffar tjuven och tar hans grejer");
                         }
                     }
