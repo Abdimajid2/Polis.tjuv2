@@ -23,7 +23,7 @@ namespace polis.tjuv2
         public List<Item> Inventory { get; set; }
 
 
-
+        public List<Status> Feed { get; set; }
 
 
         public Person()
