@@ -12,7 +12,7 @@ namespace polis.tjuv2
             int criminalNmr = 20;
 
 
-            List<Person> city = new List<Person>();
+            List<Person> city = new List<Person>(); // en lista med personer i staden
 
             for (int i = 0; i < 5; i++)
             {

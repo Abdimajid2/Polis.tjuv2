@@ -34,7 +34,7 @@ namespace polis.tjuv2
              //Storlek på staden :)
             TopPosition = random.Next(0,26);
             LeftPosition = random.Next(0,101);
-            Inventory = new List<Item>();
+            Inventory = new List<Item>(); // en gemensam lista för alla personer i staden
 
              
 

@@ -12,7 +12,7 @@ namespace polis.tjuv2
 
         public Item(string itemName)
         {
-            ItemName = itemName;
+            ItemName = itemName;  
         }
 
     }

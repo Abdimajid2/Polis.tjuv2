@@ -11,17 +11,22 @@ namespace polis.tjuv2
     {
 
         public List<Item> Confiscated { get; set; }
+        public List<Status> Policesatus { get; set; }
 
         public Police()
         {
-            List<Item> confiscated = new List<Item>();
-
+            List<Item> confiscated = new List<Item>(); // skapar en lista för polisen där sakerna som har tagits från tjuven förvaras
+                                                      
             Confiscated = confiscated;
 
-            Character = 'P';
+            Character = 'P'; //en bokstav som representerar polis i staden
+
+            List<Status> policestatus = new List<Status>();
+            Policesatus = policestatus;
+              
         }
 
-        public override void ShowList()
+        public override void ShowList()   
         {
             foreach (Item item in Confiscated)
             {
@@ -30,18 +35,18 @@ namespace polis.tjuv2
   
         }
 
-        public override void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        public override void Meet(List<Person> city) // skickade in listan med personer i metoden
         {
-            foreach (Person person in city)
+            foreach (Person person in city) // loopar personerna i staden
             {
-                if (this.TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
+                if (TopPosition == person.TopPosition && LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
                 {
                     
-                    if (person is Thief)
+                    if (person is Thief) // vad som händer när en polis möter på en tjuv
                     {
                         
 
-                        Thief thief = (Thief)person;
+                        Thief thief = (Thief)person; // vad som händer när en polis möter på en tjuv
 
                         if (thief.StolenGoods.Count > 0)
                         {
@@ -49,20 +54,22 @@ namespace polis.tjuv2
                             Console.SetCursorPosition(0, 27);
                             Console.Write("Polisen har fångat en tjuv som hade tagit ");
                             ShowList();
+                            
                             Console.WriteLine();
                             thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
                             int x = 0;
                             //Console.WriteLine("polisen träffar tjuven och tar hans grejer");
                         }
                     }
-                    else if (person is Citizen)
+                    else if (person is Citizen) // vad som händer när en polis möter medborgare
                     {
-                        //Console.WriteLine("det är en medborgare");
+                      
 
                     }
-                    else if (person is Police)
+                    else if (person is Police) // vad som händer när polis möter en annan polis
                     {
-                        //Console.WriteLine("det är en polis");
+                      
+
                     }
 
                 }

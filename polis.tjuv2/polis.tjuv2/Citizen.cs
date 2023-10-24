@@ -17,7 +17,7 @@ namespace polis.tjuv2
         {
 
 
-            Character = 'C';
+            Character = 'C'; // en bokstav som representerar medborgaren i staden
 
           List<Item> belongings= new List<Item>();  // här förvaras medborgarens saker i en lista.
          
@@ -25,12 +25,16 @@ namespace polis.tjuv2
 
 
               
-               belongings.Add(new Item("nycklar"));
+               belongings.Add(new Item("nycklar")); // saker som medborgaren har med sig
                 belongings.Add(new Item("plånbok"));
                belongings.Add(new Item("mobil"));
+               belongings.Add(new Item("klocka"));
+               
+               
 
 
-            Belongings = belongings;
+
+            Belongings = belongings; 
             
         }
 

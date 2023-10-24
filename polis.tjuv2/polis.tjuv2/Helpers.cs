@@ -10,7 +10,7 @@ namespace polis.tjuv2
     {
         public static string GetRandomName()
         {
-            string[] allNames =
+            string[] allNames = // ger namn till personerna i staden i en random ordning
             {
              "Andersson",
              "Johansson",
