@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Channels;
 
 namespace polis.tjuv2
 {
@@ -23,7 +24,7 @@ namespace polis.tjuv2
                 city.Add(new Citizen());
             }
             for (int t = 0; t < 10; t++)
-            {
+            { 
                 city.Add(new Thief());
             }
 
@@ -43,7 +44,7 @@ namespace polis.tjuv2
 
 
             }
-
+            //Staden matris
 
             for (int i = 0; i < y; i++)
             {
@@ -57,8 +58,7 @@ namespace polis.tjuv2
             }
             //Fylla med 10 poliser
 
-
-
+      
 
 
 
@@ -76,7 +76,7 @@ namespace polis.tjuv2
                     person.Move();
                     if (person is Citizen)
                     {
-                        ////Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
@@ -95,6 +95,7 @@ namespace polis.tjuv2
                     {
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
+
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
 
@@ -111,12 +112,39 @@ namespace polis.tjuv2
 
                 }
 
+                //Fängelese matris
+                int widht = 10;
+                int height = 10;
+                Console.SetCursorPosition(0, 30);
 
+                char[,] grid = new char[widht, height];
+             
+                for (int i = 0; i < widht; i++)
+                {
+                    for (int j = 0; j < height; j++)
+                    {
+                        if (i == 0 || i == widht - 1 || j == 0 || j == height-1)
+                        {
+                          grid[i, j] ='#'; //Väggar runt matrisen
+                        }
+                        else
+                        {
+                            grid[i, j] = ' '; // Lämna tomt inne i matrisen
+                        }
 
-                Thread.Sleep(1); // GJORDE EN ANNAN UPPDATERINGSMETOD
-                //Console.ReadKey();
+                        Console.Write(grid[i, j]+ " ");
+                        
+
+                    }
+                    Console.WriteLine();
+                }
+
+               /* Thread.Sleep(100);*/ // G*/JORDE EN ANNAN UPPDATERINGSMETOD*/
+                Console.ReadKey();
                 //Console.Clear();
             }
+      
+
         }
     }
 }
