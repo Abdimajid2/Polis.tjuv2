@@ -21,11 +21,7 @@ namespace polis.tjuv2
         public int LeftPosition { get; set; }
 
         public List<Item> Inventory { get; set; }
-
-
-     
-
-
+ 
         public Person()
         {
             Random random = new Random();
@@ -43,11 +39,10 @@ namespace polis.tjuv2
         { 
         }
 
-        public virtual int Meet(List<Person> city, int numbersOfRobberies, int numberOfArrest) // SKICKADE IN LISTAN I METODEN
+        public virtual void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
         {
-            return numbersOfRobberies;
+            
 
-            return numberOfArrest;
         }
 
         public void Move()
@@ -75,53 +70,6 @@ namespace polis.tjuv2
         }
 
 
-        public void MoveX()
-        {
-            int y = 25;
-            int x = 100;
-            int numberOfPCharacters = 10;
-            char[,] matrix = new char[y, x];
-            Random random = new Random();
-            for (int pcount = 0; pcount < numberOfPCharacters; pcount++)
-            {
-                int randomRow = random.Next(0, y);
-                int randomCol = random.Next(0, x);
-                matrix[randomRow, randomCol] = 'p';
-
-
-            }
-            while (true)
-
-
-            {
-                 
-                 
-                for (int i = 0; i < y; i++)
-                {
-                    for (int j = 0; j < x; j++)
-                    {
-                        Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
-
-                    }
-
-                    Console.WriteLine();
-                }
-                //Fylla med 10 poliser
-
-
-
-
-            }
-
-
-
-            Console.ReadKey();
-            Console.Clear();
-
-        }
-
-    
-         
 
      
     }

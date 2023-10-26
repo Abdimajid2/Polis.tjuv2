@@ -14,9 +14,7 @@ namespace polis.tjuv2
         public bool Prison { get; set; }
 
         public List<Item> StolenGoods { get; set; } // tjuvens lista
-
-        public char Name { get; set; }
-
+         
         public Thief()
         {
       
@@ -39,7 +37,7 @@ namespace polis.tjuv2
         }
 
 
-        public override int Meet(List<Person> city, int numbersOfRobberies, int numberOfArrest) // SKICKADE IN LISTAN I METODEN
+        public override void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
         {
             
             foreach (Person person in city)
@@ -66,18 +64,24 @@ namespace polis.tjuv2
                             Console.SetCursorPosition(0, 27);
                             Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
                             ShowList();
-                             
-                            numbersOfRobberies++;
+                            Program.numbersOfRobberies++;
+                            Move();
+                            
                         }
-                         
+
+                        else  //om tjuv möter på en annan tjuv kommer den att flytta på sig
+                        {
+                            Move();
+                        }
                     }
-                    Thread.Sleep(2000);
+                   
+                   
+                    Thread.Sleep(700);
                      
                     
                 }
             }
-            return numbersOfRobberies;
-            
+             
         }
 
 

@@ -13,14 +13,11 @@ namespace polis.tjuv2
 
         static void Main(string[] args)
         {
-            int policeNmr = 10;
-            int citizenNmr = 30;
-            int criminalNmr = 20;
 
 
             List<Person> city = new List<Person>(); // en lista med personer i staden
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 city.Add(new Police());
             }
@@ -40,15 +37,7 @@ namespace polis.tjuv2
             int numberOfCCharacters = 10;
 
             char[,] matrix = new char[y, x];
-            //Random random = new Random();
-            for (int pcount = 0; pcount < numberOfPCharacters; pcount++)
-            {
-                //int randomRow = random.Next(0, y);
-                //int randomCol = random.Next(0, x);
-                //matrix[randomRow, randomCol] = 'n';
-
-
-            }
+           
             //Staden matris
 
             for (int i = 0; i < y; i++)
@@ -63,13 +52,7 @@ namespace polis.tjuv2
             }
             //Fylla med 10 poliser
 
-      
 
-
-
-
-
-            
             while (true)
             {
 
@@ -109,18 +92,19 @@ namespace polis.tjuv2
                         Console.ResetColor();
 
                     }
-                    int g = 0;
+                   
 
 
 
                 }
                 foreach (Person person in city)
                 {
-                    numbersOfRobberies = person.Meet(city, numbersOfRobberies, numberOfArrest);
-                    numberOfArrest = person.Meet(city, numberOfArrest, numberOfArrest);
+                     person.Meet(city);
+                    
                      
 
                 }
+
 
                 //Fängelese matris
                 int widht = 10;
@@ -146,16 +130,26 @@ namespace polis.tjuv2
                         
 
                     }
-                    
+
                     Console.WriteLine();
                 }
+
+                List<Person> Prison = new List<Person>();
+
+                 
+                foreach (Person prisoner in Prison)
+                {
+                    Console.SetCursorPosition(prisoner.LeftPosition, prisoner.TopPosition);
+                    Console.Write(prisoner.Character);
+                }
+
+
                 Console.Write("Antal rånade medborgare");
                 Console.WriteLine(" " + numbersOfRobberies);
                 Console.Write("Antal gripna tjuvar " + numberOfArrest);
 
-                Thread.Sleep(1); // */GJORDE EN ANNAN UPPDATERINGSMETOD*/
-                //Console.ReadKey();
-                //Console.Clear();
+                Thread.Sleep(700);  
+                
             }
       
 

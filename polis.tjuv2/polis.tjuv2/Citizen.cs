@@ -29,10 +29,7 @@ namespace polis.tjuv2
                 belongings.Add(new Item("plånbok"));
                belongings.Add(new Item("mobil"));
                belongings.Add(new Item("klocka"));
-               
-               
-
-
+           
 
             Belongings = belongings; 
             
@@ -47,6 +44,21 @@ namespace polis.tjuv2
            
 
 
+        }
+        public override void Meet(List<Person> city)
+        {
+            foreach(Person person in city)
+            {
+                if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person)
+                {
+                    if(person is Citizen)
+                    {
+                        Move();
+                    }
+                }
+
+            }
+             
         }
 
     }
