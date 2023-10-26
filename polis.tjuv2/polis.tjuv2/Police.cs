@@ -23,6 +23,8 @@ namespace polis.tjuv2
 
             List<Status> policestatus = new List<Status>();
             Policesatus = policestatus;
+
+             
               
         }
 
@@ -35,7 +37,7 @@ namespace polis.tjuv2
   
         }
 
-        public override int Meet(List<Person> city, int numbersOfRobberies) // skickade in listan med personer i metoden
+        public override int Meet(List<Person> city, int numbersOfRobberies, int numberOfArrest) // skickade in listan med personer i metoden
         {
             foreach (Person person in city) // loopar personerna i staden
             {
@@ -54,11 +56,11 @@ namespace polis.tjuv2
                             Console.SetCursorPosition(0, 27);
                             Console.Write("Polisen har fångat en tjuv som hade tagit ");
                             ShowList();
-                            
+                           
                             Console.WriteLine();
                             thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
                             int x = 0;
-                            //Console.WriteLine("polisen träffar tjuven och tar hans grejer");
+                            numberOfArrest++;
                         }
                     }
                     else if (person is Citizen) // vad som händer när en polis möter medborgare
@@ -76,7 +78,9 @@ namespace polis.tjuv2
                 }
                
             }
+            return numberOfArrest;
             return numbersOfRobberies;
+             
 
         }
 

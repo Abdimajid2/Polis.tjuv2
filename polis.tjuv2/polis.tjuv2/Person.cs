@@ -43,9 +43,11 @@ namespace polis.tjuv2
         { 
         }
 
-        public virtual int Meet(List<Person> city, int numbersOfRobberies) // SKICKADE IN LISTAN I METODEN
+        public virtual int Meet(List<Person> city, int numbersOfRobberies, int numberOfArrest) // SKICKADE IN LISTAN I METODEN
         {
             return numbersOfRobberies;
+
+            return numberOfArrest;
         }
 
         public void Move()
