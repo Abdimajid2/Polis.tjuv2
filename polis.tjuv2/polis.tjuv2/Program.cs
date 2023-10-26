@@ -78,6 +78,7 @@ namespace polis.tjuv2
                     person.Move();
                     if (person is Citizen)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
@@ -86,6 +87,7 @@ namespace polis.tjuv2
                     }
                     if (person is Police)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
@@ -95,12 +97,13 @@ namespace polis.tjuv2
                     }
                     if (person is Thief)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
 
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
-
+                        Console.ResetColor();
 
                     }
                     int g = 0;
