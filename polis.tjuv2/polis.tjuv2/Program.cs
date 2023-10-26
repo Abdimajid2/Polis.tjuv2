@@ -6,6 +6,8 @@ namespace polis.tjuv2
 {
     internal class Program
     {
+        public static int numbersOfRobberies = 0;
+
         static void Main(string[] args)
         {
             int policeNmr = 10;
@@ -108,7 +110,8 @@ namespace polis.tjuv2
                 }
                 foreach (Person person in city)
                 {
-                    person.Meet(city);
+                    numbersOfRobberies = person.Meet(city, numbersOfRobberies);
+
 
                 }
 
@@ -136,11 +139,14 @@ namespace polis.tjuv2
                         
 
                     }
+                    
                     Console.WriteLine();
                 }
+                Console.WriteLine("Antal rånade medborgare");
+                Console.WriteLine(" " + numbersOfRobberies);
 
-               /* Thread.Sleep(100);*/ // G*/JORDE EN ANNAN UPPDATERINGSMETOD*/
-                Console.ReadKey();
+                Thread.Sleep(100); // */GJORDE EN ANNAN UPPDATERINGSMETOD*/
+                //Console.ReadKey();
                 //Console.Clear();
             }
       

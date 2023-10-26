@@ -10,7 +10,7 @@ namespace polis.tjuv2
     public class Police : Person
     {
 
-        public List<Item> Confiscated { get; set; }
+        public List<Item> Confiscated { get; set; } // polisens lista 
         public List<Status> Policesatus { get; set; }
 
         public Police()
@@ -35,7 +35,7 @@ namespace polis.tjuv2
   
         }
 
-        public override void Meet(List<Person> city) // skickade in listan med personer i metoden
+        public override int Meet(List<Person> city, int numbersOfRobberies) // skickade in listan med personer i metoden
         {
             foreach (Person person in city) // loopar personerna i staden
             {
@@ -72,8 +72,11 @@ namespace polis.tjuv2
 
                     }
 
+                    
                 }
+               
             }
+            return numbersOfRobberies;
 
         }
 

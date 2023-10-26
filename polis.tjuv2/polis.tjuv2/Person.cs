@@ -23,7 +23,7 @@ namespace polis.tjuv2
         public List<Item> Inventory { get; set; }
 
 
-        public List<Status> Feed { get; set; }
+     
 
 
         public Person()
@@ -43,8 +43,9 @@ namespace polis.tjuv2
         { 
         }
 
-        public virtual void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        public virtual int Meet(List<Person> city, int numbersOfRobberies) // SKICKADE IN LISTAN I METODEN
         {
+            return numbersOfRobberies;
         }
 
         public void Move()

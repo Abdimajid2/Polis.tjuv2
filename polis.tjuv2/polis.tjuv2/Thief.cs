@@ -13,7 +13,7 @@ namespace polis.tjuv2
         Random random = new Random();
         public bool Prison { get; set; }
 
-        public List<Item> StolenGoods { get; set; }
+        public List<Item> StolenGoods { get; set; } // tjuvens lista
 
         public char Name { get; set; }
 
@@ -39,8 +39,9 @@ namespace polis.tjuv2
         }
 
 
-        public override void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        public override int Meet(List<Person> city, int numbersOfRobberies) // SKICKADE IN LISTAN I METODEN
         {
+             
             foreach (Person person in city)
             {
                 if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
@@ -49,29 +50,33 @@ namespace polis.tjuv2
 
                     if (person is Citizen) // vad som hände när en tjuv möter en medborgare
                     {
-                        //Console.SetCursorPosition(0, 27);
-                        //Console.Write("En tjuv har rånat en medborgare!!!");
-                        //ShowList();
+
+                        
                         Citizen citizen = (Citizen)person; // MÅSTE CASTA OM PERSON TILL EN CITIZEN FÖR ATT KOMMA ÅT SUBKLASS PROP
 
 
                         if (citizen.Belongings.Count > 0) // KOLLAR OM CITIZEN HAR BELONGINGS KVAR
                         {
-                             
+
+                            
                             int targetitem = random.Next(0, citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
                             StolenGoods.Add(citizen.Belongings[targetitem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
                             citizen.Belongings.RemoveAt(targetitem); // tar bort en sak från medborgarens lista
+                            
                             Console.SetCursorPosition(0, 27);
                             Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
                             ShowList();
-
+                            
+                            numbersOfRobberies++;
                         }
-
+                         
                     }
-
                     Thread.Sleep(2000);
+                     
+                    
                 }
             }
+            return numbersOfRobberies;
 
         }
 
