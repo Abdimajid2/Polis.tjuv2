@@ -34,16 +34,16 @@ namespace polis.tjuv2
          
         public override CityPrison Meet(List<Person> city, List<Person> prison) // skickade in listan med personer i metoden
         {
-            foreach (Person person in city) // loopar personerna i staden
+            for(int i = 0; i <city.Count; i++) // loopar personerna i staden
             {
-                if (TopPosition == person.TopPosition && LeftPosition == person.LeftPosition && this != person) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
+                if (TopPosition == city[i].TopPosition && LeftPosition == city[i].LeftPosition && this != city[i]) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
                 {
 
-                    if (person is Thief) // vad som händer när en polis möter på en tjuv
+                    if (city[i] is Thief) // vad som händer när en polis möter på en tjuv
                     {
 
                          
-                        Thief thief = (Thief)person; // vad som händer när en polis möter på en tjuv
+                        Thief thief = (Thief)city[i]; // vad som händer när en polis möter på en tjuv
 
                         if (thief.StolenGoods.Count > 0)
                         {
@@ -68,9 +68,10 @@ namespace polis.tjuv2
                             Move(); /*om polis möter på en annan polis kommer den att flytta på sig*/
                         }
                     }
-                    if(person is Citizen)
+                    if(city[i] is Citizen)
                     {
-                        Move();
+                        
+
                     }
                    
 

@@ -61,7 +61,7 @@ namespace polis.tjuv2
                     person.Move();
                     if (person is Citizen)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        //Console.ForegroundColor = ConsoleColor.Green;
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
@@ -70,7 +70,7 @@ namespace polis.tjuv2
                     }
                     if (person is Police)
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
+                        //Console.ForegroundColor = ConsoleColor.Blue;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
@@ -80,13 +80,13 @@ namespace polis.tjuv2
                     }
                     if (person is Thief)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        //Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
 
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
-                        Console.ResetColor();
+                        //Console.ResetColor();
 
                     }
 
@@ -94,9 +94,9 @@ namespace polis.tjuv2
 
 
                 }
-                foreach (Person person in city)
+                for(int i = 0; i < city.Count; i++)
                 {
-                    CityPrison cityPrison = person.Meet(city, prison);
+                    CityPrison cityPrison = city[i].Meet(city, prison);
                     city = cityPrison.City;
                     prison = cityPrison.Prison;
 
@@ -141,10 +141,10 @@ namespace polis.tjuv2
                     Console.Write(prisoner.Character);
                 }
 
-
-                Console.Write("Antal rånade medborgare");
-                Console.WriteLine(" " + numbersOfRobberies);
-                Console.Write("Antal gripna tjuvar " + numberOfArrest);
+                Console.SetCursorPosition(0, 41);
+                Console.Write("Antal rånade medborgare: " + numbersOfRobberies);
+                Console.WriteLine();
+                Console.Write("Antal gripna tjuvar: " + numberOfArrest);
 
                 Thread.Sleep(100);
 
