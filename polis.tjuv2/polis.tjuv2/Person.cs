@@ -20,6 +20,10 @@ namespace polis.tjuv2
 
         public int LeftPosition { get; set; }
 
+        public int PrisonerTopPosition{ get; set; }
+
+        public int PrisonerLeftPosition { get; set; }
+
         public List<Item> Inventory { get; set; }
  
         public Person()
@@ -31,8 +35,10 @@ namespace polis.tjuv2
             TopPosition = random.Next(0,26);
             LeftPosition = random.Next(0,101);
             Inventory = new List<Item>(); // en gemensam lista för alla personer i staden
+            PrisonerTopPosition = random.Next(31, 40);
+            PrisonerLeftPosition = random.Next(1, 10);
 
-             
+
 
         }
         public virtual void ShowList()
@@ -47,12 +53,14 @@ namespace polis.tjuv2
             cityPrison.City = city;
             return cityPrison;
         }
+     
 
-        public void Move()
+        public virtual void Move()
         {
             TopPosition = TopPosition + TopDirection ;
             LeftPosition = LeftPosition + LeftDirection ;
-
+            PrisonerTopPosition = PrisonerTopPosition + TopDirection;
+            PrisonerLeftPosition = PrisonerLeftPosition + LeftDirection;
             // HÅLLER PERSONEN INNANFÖR SPELPLANEN
             if (TopPosition < 0)
             {
@@ -69,6 +77,22 @@ namespace polis.tjuv2
             else if (LeftPosition > 100)
             {
                 LeftPosition = 0;
+            }
+            if (PrisonerTopPosition < 31)
+            {
+                PrisonerTopPosition = 38;
+            }
+            else if(PrisonerTopPosition >38) 
+            { 
+                PrisonerTopPosition = 31;
+            }
+            if (PrisonerLeftPosition < 1)
+            {
+                PrisonerLeftPosition = 8;
+            }
+            else if (PrisonerLeftPosition > 8)
+            {
+                PrisonerLeftPosition = 1;
             }
         }
 

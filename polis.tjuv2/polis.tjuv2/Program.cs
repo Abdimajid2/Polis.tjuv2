@@ -107,6 +107,7 @@ namespace polis.tjuv2
                 //Fängelese matris
                 int widht = 10;
                 int height = 10;
+                    
                 Console.SetCursorPosition(0, 30);
 
                 char[,] grid = new char[widht, height];
@@ -124,7 +125,7 @@ namespace polis.tjuv2
                             grid[i, j] = ' '; // Lämna tomt inne i matrisen
                         }
 
-                        Console.Write(grid[i, j] + " ");
+                        Console.Write(grid[i, j] );
 
 
                     }
@@ -136,8 +137,10 @@ namespace polis.tjuv2
 
 
                 foreach (Person prisoner in prison)
+
                 {
-                    Console.SetCursorPosition(prisoner.LeftPosition, prisoner.TopPosition);
+                    prisoner.Move();
+                    Console.SetCursorPosition(prisoner.PrisonerLeftPosition, prisoner.PrisonerTopPosition);
                     Console.Write(prisoner.Character);
                 }
 
@@ -146,7 +149,7 @@ namespace polis.tjuv2
                 Console.WriteLine();
                 Console.Write("Antal gripna tjuvar: " + numberOfArrest);
 
-                Thread.Sleep(100);
+                Thread.Sleep(500);
 
             }
 
