@@ -33,50 +33,57 @@ namespace polis.tjuv2
         }
          
         public override CityPrison Meet(List<Person> city, List<Person> prison) // skickade in listan med personer i metoden
-        {
-            for(int i = 0; i <city.Count; i++) // loopar personerna i staden
+        {   
+            int removePerson = 0;
+            for(int i = 0; i <city.Count-removePerson-1; i++) // loopar personerna i staden
             {
-                if (TopPosition == city[i].TopPosition && LeftPosition == city[i].LeftPosition && this != city[i]) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
+                if (city.Count - removePerson > i)
                 {
-
-                    if (city[i] is Thief) // vad som händer när en polis möter på en tjuv
+                    if (TopPosition == city[i].TopPosition && LeftPosition == city[i].LeftPosition && this != city[i]) // KOLLAR POSITIONERNA ÄR SAMMA OCH ATT MAN INTE KOLLAR PÅ SIG SJÄLV
                     {
 
-                         
-                        Thief thief = (Thief)city[i]; // vad som händer när en polis möter på en tjuv
-
-                        if (thief.StolenGoods.Count > 0)
+                        if (city[i] is Thief) // vad som händer när en polis möter på en tjuv
                         {
-                            
-                              
-                            city.Remove(thief);
-                            prison.Add(thief);
-                            
-                            Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
-                            Console.SetCursorPosition(0, 27);
-                            Console.Write("Polisen har fångat en tjuv som hade tagit ");
-                            ShowList();
-                            Console.WriteLine();
-                            thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
-                            Program.numberOfArrest++;
-                            Move();
-                            
-                            Thread.Sleep(1000);
+
+
+                            Thief thief = (Thief)city[i]; // vad som händer när en polis möter på en tjuv
+
+                            if (thief.StolenGoods.Count > 0)
+                            {
+                                removePerson++;
+
+                                city.Remove(thief);
+                                prison.Add(thief);
+
+                                Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
+                                Console.SetCursorPosition(0, 27);
+                                Console.Write("Polisen har fångat en tjuv som hade tagit ");
+                                ShowList();
+                                Console.WriteLine();
+                                thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
+                                Program.numberOfArrest++;
+                                Move();
+
+                                Thread.Sleep(1000);
+                            }
+                            else
+                            {
+                                Move(); /*om polis möter på en annan polis kommer den att flytta på sig*/
+                            }
                         }
-                        else
+                        if (city[i] is Citizen)
                         {
-                            Move(); /*om polis möter på en annan polis kommer den att flytta på sig*/
+                            Citizen citizen = (Citizen)city[i];
+                            if (citizen.Belongings.Count == 0)
+                            {
+
+                            }
+
                         }
-                    }
-                    if(city[i] is Citizen)
-                    {
-                        
+
 
                     }
-                   
-
                 }
-
             }
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
