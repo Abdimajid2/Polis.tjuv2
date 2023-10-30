@@ -39,10 +39,13 @@ namespace polis.tjuv2
         { 
         }
 
-        public virtual void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        public virtual CityPrison Meet(List<Person> city, List<Person> prison) // SKICKADE IN LISTAN I METODEN
         {
-            
 
+            CityPrison cityPrison = new CityPrison();
+            cityPrison.Prison = prison;
+            cityPrison.City = city;
+            return cityPrison;
         }
 
         public void Move()
@@ -50,7 +53,7 @@ namespace polis.tjuv2
             TopPosition = TopPosition + TopDirection ;
             LeftPosition = LeftPosition + LeftDirection ;
 
-            // ÄNDRA TILL EN SWITCH, HÅLLER PERSONEN INNANFÖR SPELPLANEN
+            // HÅLLER PERSONEN INNANFÖR SPELPLANEN
             if (TopPosition < 0)
             {
                 TopPosition = 25;

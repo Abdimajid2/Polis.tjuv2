@@ -11,8 +11,7 @@ namespace polis.tjuv2
     {
 
         public List<Item> Confiscated { get; set; } // polisens lista 
-        public List<Status> Policesatus { get; set; }
-        public List<Person> Prisoners { get; set; }
+  
         public Police()
         {
             List<Item> confiscated = new List<Item>(); // skapar en lista för polisen där sakerna som har tagits från tjuven förvaras
@@ -21,11 +20,7 @@ namespace polis.tjuv2
 
             Character = 'P'; //en bokstav som representerar polis i staden
 
-            List<Status> policestatus = new List<Status>();
-            Policesatus = policestatus;
-
-            List<Person> prisoners = new List<Person>();
-            Prisoners = prisoners;
+             
         }
 
         public override void ShowList()
@@ -37,7 +32,7 @@ namespace polis.tjuv2
 
         }
          
-        public override void Meet(List<Person> city) // skickade in listan med personer i metoden
+        public override CityPrison Meet(List<Person> city, List<Person> prison) // skickade in listan med personer i metoden
         {
             foreach (Person person in city) // loopar personerna i staden
             {
@@ -52,7 +47,10 @@ namespace polis.tjuv2
 
                         if (thief.StolenGoods.Count > 0)
                         {
-                            Prisoners.Add(thief);
+                            
+                              
+                            city.Remove(thief);
+                            prison.Add(thief);
                             
                             Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
                             Console.SetCursorPosition(0, 27);
@@ -63,7 +61,7 @@ namespace polis.tjuv2
                             Program.numberOfArrest++;
                             Move();
                             
-
+                            Thread.Sleep(1000);
                         }
                         else
                         {
@@ -74,14 +72,15 @@ namespace polis.tjuv2
                     {
                         Move();
                     }
-                  
-                    Thread.Sleep(700);
+                   
+
                 }
 
             }
-            
-
-
+            CityPrison cityPrison = new CityPrison();
+            cityPrison.Prison = prison;
+            cityPrison.City = city;
+            return cityPrison;
         }
 
     }

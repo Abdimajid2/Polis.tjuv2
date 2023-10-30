@@ -11,7 +11,7 @@ namespace polis.tjuv2
     public class Citizen : Person
     {
 
-        public List<Item>Belongings  { get; set; }
+        public List<Item> Belongings { get; set; }
 
         public Citizen()
         {
@@ -19,46 +19,45 @@ namespace polis.tjuv2
 
             Character = 'C'; // en bokstav som representerar medborgaren i staden
 
-          List<Item> belongings= new List<Item>();  // här förvaras medborgarens saker i en lista.
-         
-            
+            List<Item> belongings = new List<Item>();  // här förvaras medborgarens saker i en lista.
+
+            belongings.Add(new Item("nycklar")); // saker som medborgaren har med sig
+            belongings.Add(new Item("plånbok"));
+            belongings.Add(new Item("mobil"));
+            belongings.Add(new Item("klocka"));
 
 
-              
-               belongings.Add(new Item("nycklar")); // saker som medborgaren har med sig
-                belongings.Add(new Item("plånbok"));
-               belongings.Add(new Item("mobil"));
-               belongings.Add(new Item("klocka"));
-           
+            Belongings = belongings;
 
-            Belongings = belongings; 
-            
         }
 
         public override void ShowList()
         {
-            foreach(Item item in Belongings)
+            foreach (Item item in Belongings)
             {
                 Console.Write(item.ItemName + " ");
             }
-           
+
 
 
         }
-        public override void Meet(List<Person> city)
+        public override CityPrison Meet(List<Person> city, List<Person> prison)
         {
-            foreach(Person person in city)
+            foreach (Person person in city)
             {
                 if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person)
                 {
-                    if(person is Citizen)
+                    if (person is Citizen)
                     {
                         Move();
                     }
                 }
 
             }
-             
+            CityPrison cityPrison = new CityPrison();
+            cityPrison.Prison = prison;
+            cityPrison.City = city;
+            return cityPrison;
         }
 
     }

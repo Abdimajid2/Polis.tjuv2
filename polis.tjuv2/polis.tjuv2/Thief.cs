@@ -37,7 +37,7 @@ namespace polis.tjuv2
         }
 
 
-        public override void Meet(List<Person> city) // SKICKADE IN LISTAN I METODEN
+        public override CityPrison Meet(List<Person> city, List<Person> prison) // SKICKADE IN LISTAN I METODEN
         {
             
             foreach (Person person in city)
@@ -66,23 +66,29 @@ namespace polis.tjuv2
                             ShowList();
                             Program.numbersOfRobberies++;
                             Move();
-                            
+                            Thread.Sleep(1000);
                         }
 
                         else  //om tjuv möter på en annan tjuv kommer den att flytta på sig
                         {
-                            Move();
+                             Move();
                         }
                     }
                    
                    
-                    Thread.Sleep(700);
+                    
+
                      
                     
                 }
             }
-             
+
+            CityPrison cityPrison = new CityPrison();
+            cityPrison.Prison = prison;
+            cityPrison.City = city;
+            return cityPrison;
         }
+         
 
 
     }

@@ -13,31 +13,29 @@ namespace polis.tjuv2
 
         static void Main(string[] args)
         {
-
+            List<Person> prison = new List<Person>(); // en lista för fängelset
 
             List<Person> city = new List<Person>(); // en lista med personer i staden
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 city.Add(new Police());
             }
-            for (int c = 0; c < 10; c++)
+            for (int c = 0; c < 20; c++)
             {
                 city.Add(new Citizen());
             }
             for (int t = 0; t < 10; t++)
-            { 
+            {
                 city.Add(new Thief());
             }
 
 
             int y = 25;
             int x = 100;
-            int numberOfPCharacters = 10;
-            int numberOfCCharacters = 10;
 
             char[,] matrix = new char[y, x];
-           
+
             //Staden matris
 
             for (int i = 0; i < y; i++)
@@ -50,7 +48,6 @@ namespace polis.tjuv2
 
                 Console.WriteLine();
             }
-            //Fylla med 10 poliser
 
 
             while (true)
@@ -92,16 +89,17 @@ namespace polis.tjuv2
                         Console.ResetColor();
 
                     }
-                   
+
 
 
 
                 }
                 foreach (Person person in city)
                 {
-                     person.Meet(city);
-                    
-                     
+                    CityPrison cityPrison = person.Meet(city, prison);
+                    city = cityPrison.City;
+                    prison = cityPrison.Prison;
+
 
                 }
 
@@ -112,32 +110,32 @@ namespace polis.tjuv2
                 Console.SetCursorPosition(0, 30);
 
                 char[,] grid = new char[widht, height];
-             
+
                 for (int i = 0; i < widht; i++)
                 {
                     for (int j = 0; j < height; j++)
                     {
-                        if (i == 0 || i == widht - 1 || j == 0 || j == height-1)
+                        if (i == 0 || i == widht - 1 || j == 0 || j == height - 1)
                         {
-                          grid[i, j] ='#'; //Väggar runt matrisen
+                            grid[i, j] = '#'; //Väggar runt matrisen
                         }
                         else
                         {
                             grid[i, j] = ' '; // Lämna tomt inne i matrisen
                         }
 
-                        Console.Write(grid[i, j]+ " ");
-                        
+                        Console.Write(grid[i, j] + " ");
+
 
                     }
 
                     Console.WriteLine();
                 }
 
-                List<Person> Prison = new List<Person>();
 
-                 
-                foreach (Person prisoner in Prison)
+
+
+                foreach (Person prisoner in prison)
                 {
                     Console.SetCursorPosition(prisoner.LeftPosition, prisoner.TopPosition);
                     Console.Write(prisoner.Character);
@@ -148,10 +146,10 @@ namespace polis.tjuv2
                 Console.WriteLine(" " + numbersOfRobberies);
                 Console.Write("Antal gripna tjuvar " + numberOfArrest);
 
-                Thread.Sleep(700);  
-                
+                Thread.Sleep(100);
+
             }
-      
+
 
         }
     }
