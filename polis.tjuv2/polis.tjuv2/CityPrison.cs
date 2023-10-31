@@ -12,6 +12,8 @@ namespace polis.tjuv2
 
         public List<Person> Prison { get; set; }
 
+        public List<Person> Poorhouse { get; set; }
+
 
     }
 }

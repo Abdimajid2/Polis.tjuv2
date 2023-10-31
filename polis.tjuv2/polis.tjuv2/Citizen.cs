@@ -41,7 +41,7 @@ namespace polis.tjuv2
 
 
         }
-        public override CityPrison Meet(List<Person> city, List<Person> prison)
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse)
         {
             foreach (Person person in city)
             {
@@ -57,6 +57,7 @@ namespace polis.tjuv2
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
+            cityPrison.Poorhouse = poorhouse;
             return cityPrison;
         }
 

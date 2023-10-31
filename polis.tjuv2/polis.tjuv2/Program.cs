@@ -8,6 +8,7 @@ namespace polis.tjuv2
     {
         public static int numbersOfRobberies = 0;
         public static int numberOfArrest = 0;
+        public static int numberOfPoor = 0;
 
 
 
@@ -17,6 +18,8 @@ namespace polis.tjuv2
 
             List<Person> city = new List<Person>(); // en lista med personer i staden
 
+            List<Person> poorhouse = new List<Person>();
+
             for (int i = 0; i < 20; i++)
             {
                 city.Add(new Police());
@@ -25,12 +28,14 @@ namespace polis.tjuv2
             {
                 city.Add(new Citizen());
             }
-            for (int t = 0; t < 10; t++)
+            for (int t = 0; t < 30; t++)
             {
                 city.Add(new Thief());
             }
 
-
+          
+            
+            
             int y = 25;
             int x = 100;
 
@@ -40,18 +45,29 @@ namespace polis.tjuv2
 
             for (int i = 0; i < y; i++)
             {
+                
                 for (int j = 0; j < x; j++)
                 {
-                    Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
+                        if (i == 0 || i == y - 1 || j == 0 || j == x - 1)
+                        {
+                            matrix[i, j] = '#';
+                        }
+                    else
+                    {
+                        matrix[i, j] = ' ';
+                    }
+                    Console.Write(matrix[i, j]);
+                    //Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
 
                 }
 
                 Console.WriteLine();
             }
 
-
-            while (true)
-            {
+            while (true) 
+            { 
+            
+            
 
                 Console.Clear();
                 foreach (Person person in city)
@@ -96,10 +112,10 @@ namespace polis.tjuv2
                 }
                 for(int i = 0; i < city.Count; i++)
                 {
-                    CityPrison cityPrison = city[i].Meet(city, prison);
+                    CityPrison cityPrison = city[i].Meet(city, prison,poorhouse);
                     city = cityPrison.City;
                     prison = cityPrison.Prison;
-
+                    poorhouse = cityPrison.Poorhouse;
 
                 }
 
@@ -143,13 +159,50 @@ namespace polis.tjuv2
                     Console.SetCursorPosition(prisoner.PrisonerLeftPosition, prisoner.PrisonerTopPosition);
                     Console.Write(prisoner.Character);
                 }
+                int a = 10;
+                int b = 50;
 
-                Console.SetCursorPosition(0, 41);
+                Console.SetCursorPosition(0,41 );
+
+                char[,] grids = new char[a, b];
+
+                for (int i = 0; i < a; i++)
+                {
+                    for (int j = 0; j < b; j++)
+                    {
+                        if (i == 0 || i == a - 1 || j == 0 || j == b - 1)
+                        {
+                            grids[i, j] = '#'; //Väggar runt matrisen
+                        }
+                        else
+                        {
+                            grids[i, j] = ' '; // Lämna tomt inne i matrisen
+                        }
+
+                        Console.Write(grids[i, j]);
+
+
+                    }
+
+                    Console.WriteLine();
+                }
+
+                foreach (Person poor in poorhouse)
+
+                {
+                    poor.Move();
+                    Console.SetCursorPosition(poor.PoorLeftPosition, poor.PoorTopPosition);
+                    Console.Write(poor.Character);
+                }
+
+                Console.SetCursorPosition(0,52);
                 Console.Write("Antal rånade medborgare: " + numbersOfRobberies);
                 Console.WriteLine();
                 Console.Write("Antal gripna tjuvar: " + numberOfArrest);
+                Console.WriteLine();
+                Console.Write("Antal personer i fattighuset: " + numberOfPoor);
 
-                Thread.Sleep(500);
+                Thread.Sleep(100);
 
             }
 

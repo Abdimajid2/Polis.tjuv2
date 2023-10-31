@@ -37,7 +37,7 @@ namespace polis.tjuv2
         }
 
 
-        public override CityPrison Meet(List<Person> city, List<Person> prison) // SKICKADE IN LISTAN I METODEN
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // SKICKADE IN LISTAN I METODEN
         {
             
             foreach (Person person in city)
@@ -86,6 +86,7 @@ namespace polis.tjuv2
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
+            cityPrison.Poorhouse = poorhouse;
             return cityPrison;
         }
          

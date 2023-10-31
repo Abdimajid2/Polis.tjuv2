@@ -24,6 +24,11 @@ namespace polis.tjuv2
 
         public int PrisonerLeftPosition { get; set; }
 
+        public int PoorTopPosition { get; set; }
+
+        public int PoorLeftPosition { get; set; }
+
+
         public List<Item> Inventory { get; set; }
  
         public Person()
@@ -32,11 +37,14 @@ namespace polis.tjuv2
             TopDirection = random.Next(-1,2);
             LeftDirection = random.Next(-1,2);
              //Storlek på staden :)
-            TopPosition = random.Next(0,26);
-            LeftPosition = random.Next(0,101);
+            TopPosition = random.Next(1,25);
+            LeftPosition = random.Next(1,100);
             Inventory = new List<Item>(); // en gemensam lista för alla personer i staden
-            PrisonerTopPosition = random.Next(31, 40);
+            PrisonerTopPosition = random.Next(31, 40);  //inuti fängelset
             PrisonerLeftPosition = random.Next(1, 10);
+            PoorTopPosition = random.Next(42, 51);  //inuti poorhouse
+            PoorLeftPosition = random.Next(1, 50);
+
 
 
 
@@ -45,12 +53,13 @@ namespace polis.tjuv2
         { 
         }
 
-        public virtual CityPrison Meet(List<Person> city, List<Person> prison) // SKICKADE IN LISTAN I METODEN
+        public virtual CityPrison Meet(List<Person> city, List<Person> prison,List<Person>poorhouse) // SKICKADE IN LISTAN I METODEN
         {
 
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
+            cityPrison.Poorhouse = poorhouse;
             return cityPrison;
         }
      
@@ -61,22 +70,24 @@ namespace polis.tjuv2
             LeftPosition = LeftPosition + LeftDirection ;
             PrisonerTopPosition = PrisonerTopPosition + TopDirection;
             PrisonerLeftPosition = PrisonerLeftPosition + LeftDirection;
+            PoorTopPosition = PoorTopPosition + TopDirection ;
+            PoorLeftPosition= PoorLeftPosition + LeftDirection ;
             // HÅLLER PERSONEN INNANFÖR SPELPLANEN
-            if (TopPosition < 0)
+            if (TopPosition < 1)
             {
-                TopPosition = 25;
+                TopPosition = 23;
             }
-            else if (TopPosition > 25)
+            else if (TopPosition > 23)
             {
-                TopPosition = 0;
+                TopPosition = 1;
             }
-            if (LeftPosition < 0)
+            if (LeftPosition < 1)
             {
-                LeftPosition = 100;
+                LeftPosition = 98;
             }
-            else if (LeftPosition > 100)
+            else if (LeftPosition > 98)
             {
-                LeftPosition = 0;
+                LeftPosition = 1;
             }
             if (PrisonerTopPosition < 31)
             {
@@ -94,6 +105,23 @@ namespace polis.tjuv2
             {
                 PrisonerLeftPosition = 1;
             }
+            if (PoorTopPosition < 42)
+            {
+                PoorTopPosition = 49;
+            }
+            else if (PoorTopPosition > 49)
+            {
+                PoorTopPosition =42 ;
+            }
+            if (PoorLeftPosition < 1)
+            {
+                PoorLeftPosition = 48;
+            }
+            else if (PoorLeftPosition > 48)
+            {
+                PoorLeftPosition = 1;
+            }
+
         }
 
 

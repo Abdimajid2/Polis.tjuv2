@@ -32,7 +32,7 @@ namespace polis.tjuv2
 
         }
          
-        public override CityPrison Meet(List<Person> city, List<Person> prison) // skickade in listan med personer i metoden
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // skickade in listan med personer i metoden
         {   
             int removePerson = 0;
             for(int i = 0; i <city.Count-removePerson-1; i++) // loopar personerna i staden
@@ -76,7 +76,13 @@ namespace polis.tjuv2
                             Citizen citizen = (Citizen)city[i];
                             if (citizen.Belongings.Count == 0)
                             {
-
+                                city.Remove(citizen); 
+                                poorhouse.Add(citizen);
+                                Console.SetCursorPosition(0, 27);
+                                Console.Write("Polisen har träffat en medborgare utan saker, tar personen till fattighuset");
+                                Program.numberOfPoor++;
+                                Move();
+                                Thread.Sleep(1000);
                             }
 
                         }
@@ -88,6 +94,7 @@ namespace polis.tjuv2
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
+            cityPrison.Poorhouse = poorhouse;
             return cityPrison;
         }
 
