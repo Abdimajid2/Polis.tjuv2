@@ -14,6 +14,8 @@ namespace polis.tjuv2
 
         public List<Person> Poorhouse { get; set; }
 
+        public List<string> NewsFeed { get; set; }
+
 
     }
 }

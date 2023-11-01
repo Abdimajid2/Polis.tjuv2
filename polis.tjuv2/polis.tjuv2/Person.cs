@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace polis.tjuv2
 {
     public class Person
-    {
-        
+    {      
         public int TopDirection { get; set; }
 
         public int LeftDirection { get; set; }
@@ -51,16 +50,18 @@ namespace polis.tjuv2
         }
       
         public virtual void ShowList()
-        { 
+        {
+            
         }
 
-        public virtual CityPrison Meet(List<Person> city, List<Person> prison,List<Person>poorhouse) // SKICKADE IN LISTAN I METODEN
+        public virtual CityPrison Meet(List<Person> city, List<Person> prison,List<Person>poorhouse, List<string> newsFeed) // SKICKADE IN LISTAN I METODEN
         {
 
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
             cityPrison.Poorhouse = poorhouse;
+            cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }
      

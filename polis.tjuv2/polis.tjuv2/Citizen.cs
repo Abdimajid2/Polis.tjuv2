@@ -37,11 +37,12 @@ namespace polis.tjuv2
             {
                 Console.Write(item.ItemName + " ");
             }
+            
         }
           
 
 
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse)
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed)
         {
             foreach (Person person in city)
             {
@@ -58,6 +59,7 @@ namespace polis.tjuv2
             cityPrison.Prison = prison;
             cityPrison.City = city;
             cityPrison.Poorhouse = poorhouse;
+            cityPrison.NewsFeed = newsFeed;
             return cityPrison;
 
 

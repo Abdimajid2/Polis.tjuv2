@@ -9,7 +9,6 @@ namespace polis.tjuv2
 {
     public class Police : Person
     {
-
         public List<Item> Confiscated { get; set; } // polisens lista 
   
         public Police()
@@ -18,9 +17,7 @@ namespace polis.tjuv2
 
             Confiscated = confiscated;
 
-            Character = 'P'; //en bokstav som representerar polis i staden
-
-             
+            Character = 'P'; //en bokstav som representerar polis i staden         
         }
 
         public override void ShowList()
@@ -29,12 +26,9 @@ namespace polis.tjuv2
             {
                 Console.Write(item.ItemName + " ");
             }
-
-        }
-      
-
-
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // skickade in listan med personer i metoden
+            
+        }      
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed) // skickade in listan med personer i metoden
         {   
             int removePerson = 0;
             for(int i = 0; i <city.Count-removePerson-1; i++) // loopar personerna i staden
@@ -46,8 +40,6 @@ namespace polis.tjuv2
 
                         if (city[i] is Thief) // vad som händer när en polis möter på en tjuv
                         {
-
-
                             Thief thief = (Thief)city[i]; // vad som händer när en polis möter på en tjuv
 
                             if (thief.StolenGoods.Count > 0)
@@ -60,13 +52,13 @@ namespace polis.tjuv2
                                 Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
                                 Console.SetCursorPosition(0, 27);
                                 Console.Write("Polisen har fångat en tjuv som hade tagit ");
-                                ShowList();
+                                
                                 Console.WriteLine();
                                 thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
                                 //Program.numberOfArrest++;  //Kan tas bort!!
                                 Move();
 
-                                Thread.Sleep(1000);
+                                
                             }
                             else
                             {
@@ -81,7 +73,7 @@ namespace polis.tjuv2
                                 city.Remove(citizen); 
                                 poorhouse.Add(citizen);
                                 Console.SetCursorPosition(0, 27);
-                                Console.Write("Polisen har träffat en medborgare utan saker, tar personen till fattighuset");
+                                Console.Write("Polisen har träffat en medborgare utan ägodelar, tar personen till fattighuset");
                                 //Program.numberOfPoor++;  //Kan tas bort!!
                                 Move();
                                 Thread.Sleep(1000);
@@ -97,6 +89,7 @@ namespace polis.tjuv2
             cityPrison.Prison = prison;
             cityPrison.City = city;
             cityPrison.Poorhouse = poorhouse;
+            cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }
 

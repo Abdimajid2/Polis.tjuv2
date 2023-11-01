@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.ComponentModel;
 
 namespace polis.tjuv2
 {
@@ -35,12 +36,13 @@ namespace polis.tjuv2
             {
                 Console.Write(item.ItemName + " ");
             }
+           
         }
    
         
 
 
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // SKICKADE IN LISTAN I METODEN
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed) // SKICKADE IN LISTAN I METODEN
         {
             
             foreach (Person person in city)
@@ -63,13 +65,14 @@ namespace polis.tjuv2
                             int targetitem = random.Next(0, citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
                             StolenGoods.Add(citizen.Belongings[targetitem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
                             citizen.Belongings.RemoveAt(targetitem); // tar bort en sak från medborgarens lista
-                            
+                            newsFeed.Add("En tjuv har rånat en medborgare på en " + StolenGoods);
                             Console.SetCursorPosition(0, 27);
-                            Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
-                            ShowList();
+                            //Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
+                            //ShowList();
+                            int x = 0;
                             Program.numbersOfRobberies++;
                             Move();
-                            Thread.Sleep(1000);
+                            
                         }
 
                         else  //om tjuv möter på en annan tjuv kommer den att flytta på sig
@@ -77,25 +80,15 @@ namespace polis.tjuv2
                              Move();
                         }
                     }
-                   
-                   
-                    
-
-                     
-                    
-                }
+               }
             }
-
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
             cityPrison.Poorhouse = poorhouse;
+            cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }
-         
-
-
     }
-
 
 }
