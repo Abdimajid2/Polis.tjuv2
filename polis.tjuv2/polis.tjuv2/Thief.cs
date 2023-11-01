@@ -14,7 +14,8 @@ namespace polis.tjuv2
         public bool Prison { get; set; }
 
         public List<Item> StolenGoods { get; set; } // tjuvens lista
-         
+
+
         public Thief()
         {
       
@@ -24,7 +25,7 @@ namespace polis.tjuv2
             StolenGoods = stolenGoods;
 
             Character = 'T'; //en bokstav som representerar tjuven i staden
-
+            
 
         }
 
@@ -35,6 +36,8 @@ namespace polis.tjuv2
                 Console.Write(item.ItemName + " ");
             }
         }
+   
+        
 
 
         public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // SKICKADE IN LISTAN I METODEN

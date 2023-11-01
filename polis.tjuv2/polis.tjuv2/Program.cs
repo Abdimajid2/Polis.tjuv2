@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 
 namespace polis.tjuv2
@@ -7,9 +9,9 @@ namespace polis.tjuv2
     internal class Program
     {
         public static int numbersOfRobberies = 0;
-        public static int numberOfArrest = 0;
-        public static int numberOfPoor = 0;
-
+        //public static int numberOfArrest = 0;   // Kan tas bort!!
+        //public static int numberOfPoor = 0;     //Kan tas bort!!
+     
 
 
         static void Main(string[] args)
@@ -18,7 +20,7 @@ namespace polis.tjuv2
 
             List<Person> city = new List<Person>(); // en lista med personer i staden
 
-            List<Person> poorhouse = new List<Person>();
+            List<Person> poorhouse = new List<Person>(); // lista för personer i fattighuset
 
             for (int i = 0; i < 20; i++)
             {
@@ -34,42 +36,44 @@ namespace polis.tjuv2
             }
 
           
-            
-            
-            int y = 25;
-            int x = 100;
+      
+          
+           
 
-            char[,] matrix = new char[y, x];
-
-            //Staden matris
-
-            for (int i = 0; i < y; i++)
+            while (true) 
             {
-                
-                for (int j = 0; j < x; j++)
+
+                Console.Clear();
+
+               //Staden
+                int y = 25;
+                int x = 100;
+
+                char[,] matrix = new char[y, x];
+
+                //Staden matris
+
+                for (int i = 0; i <y; i++)
                 {
+
+                    for (int j = 0; j < x; j++)
+                    {
                         if (i == 0 || i == y - 1 || j == 0 || j == x - 1)
                         {
                             matrix[i, j] = '#';
                         }
-                    else
-                    {
-                        matrix[i, j] = ' ';
-                    }
-                    Console.Write(matrix[i, j]);
-                    //Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
+                        else
+                        {
+                            matrix[i, j] = ' ';
+                        }
+                        Console.Write(matrix[i, j]);
+                        //Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
 
+                    }
+
+                    Console.WriteLine();
                 }
 
-                Console.WriteLine();
-            }
-
-            while (true) 
-            { 
-            
-            
-
-                Console.Clear();
                 foreach (Person person in city)
 
                 {
@@ -78,10 +82,12 @@ namespace polis.tjuv2
                     if (person is Citizen)
                     {
                         //Console.ForegroundColor = ConsoleColor.Green;
-                        //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        
+                        //(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
+                   
 
                     }
                     if (person is Police)
@@ -91,7 +97,7 @@ namespace polis.tjuv2
                         Console.Write(person.Character);
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
-
+                     
 
                     }
                     if (person is Thief)
@@ -99,14 +105,16 @@ namespace polis.tjuv2
                         //Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
+                      
+                       
+
 
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         //Console.ResetColor();
 
                     }
-
-
+                  
 
 
                 }
@@ -116,23 +124,25 @@ namespace polis.tjuv2
                     city = cityPrison.City;
                     prison = cityPrison.Prison;
                     poorhouse = cityPrison.Poorhouse;
+                    
+               
 
                 }
 
 
                 //Fängelese matris
-                int widht = 10;
-                int height = 10;
+                int height  = 10;
+                int widht= 10;
                     
                 Console.SetCursorPosition(0, 30);
 
-                char[,] grid = new char[widht, height];
+                char[,] grid = new char [height, widht];
 
-                for (int i = 0; i < widht; i++)
+                for (int i = 0; i < height; i++)
                 {
-                    for (int j = 0; j < height; j++)
+                    for (int j = 0; j < widht; j++)
                     {
-                        if (i == 0 || i == widht - 1 || j == 0 || j == height - 1)
+                        if (i == 0 || i == height - 1 || j == 0 || j == widht - 1)
                         {
                             grid[i, j] = '#'; //Väggar runt matrisen
                         }
@@ -196,15 +206,17 @@ namespace polis.tjuv2
                 }
 
                 Console.SetCursorPosition(0,52);
-                Console.Write("Antal rånade medborgare: " + numbersOfRobberies);
-                Console.WriteLine();
-                Console.Write("Antal gripna tjuvar: " + numberOfArrest);
-                Console.WriteLine();
-                Console.Write("Antal personer i fattighuset: " + numberOfPoor);
+                Console.WriteLine("Antal rånade medborgare: " + numbersOfRobberies);
+                Console.WriteLine("Antal gripna tjuvar: " + prison.Count);
+                Console.WriteLine("Antal personer i fattighuset: " + poorhouse.Count);
+                Console.WriteLine("Antal personer i staden: " + city.Count);
+               
 
-                Thread.Sleep(100);
-
+                Thread.Sleep(1000);
+               Console.CursorVisible = false;
+               
             }
+           
 
 
         }

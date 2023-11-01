@@ -31,7 +31,9 @@ namespace polis.tjuv2
             }
 
         }
-         
+      
+
+
         public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse) // skickade in listan med personer i metoden
         {   
             int removePerson = 0;
@@ -61,7 +63,7 @@ namespace polis.tjuv2
                                 ShowList();
                                 Console.WriteLine();
                                 thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
-                                Program.numberOfArrest++;
+                                //Program.numberOfArrest++;  //Kan tas bort!!
                                 Move();
 
                                 Thread.Sleep(1000);
@@ -80,7 +82,7 @@ namespace polis.tjuv2
                                 poorhouse.Add(citizen);
                                 Console.SetCursorPosition(0, 27);
                                 Console.Write("Polisen har träffat en medborgare utan saker, tar personen till fattighuset");
-                                Program.numberOfPoor++;
+                                //Program.numberOfPoor++;  //Kan tas bort!!
                                 Move();
                                 Thread.Sleep(1000);
                             }

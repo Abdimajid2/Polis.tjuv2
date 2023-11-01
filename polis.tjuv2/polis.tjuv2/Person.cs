@@ -30,6 +30,7 @@ namespace polis.tjuv2
 
 
         public List<Item> Inventory { get; set; }
+
  
         public Person()
         {
@@ -47,8 +48,8 @@ namespace polis.tjuv2
 
 
 
-
         }
+      
         public virtual void ShowList()
         { 
         }
