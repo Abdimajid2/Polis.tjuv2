@@ -194,13 +194,18 @@ namespace polis.tjuv2
                     Console.Write(poor.Character);
                 }
                 int index = 0;
-                int removeNews = 0;
+                int indexremoveNews = 0;
+                Console.SetCursorPosition(0, 56);
                 for (int news = 0; news < 5; news++)
                 {
-                    if (newsFeed.Count - removeNews > news)
+                    if (newsFeed.Count - indexremoveNews > news)
                     {
-                        Console.SetCursorPosition(0, 56);
+                      
                         Console.WriteLine(newsFeed[news] + " ");
+                        if (newsFeed.Count >5 ) 
+                        {
+                            newsFeed.RemoveAt(0);
+                        }
                     }
                     int breakpoint = 0;
                 }
@@ -226,7 +231,7 @@ namespace polis.tjuv2
                             break;
                     }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 Console.CursorVisible = false;
                 
 

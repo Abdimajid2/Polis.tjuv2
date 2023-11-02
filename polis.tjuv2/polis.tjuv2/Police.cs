@@ -50,9 +50,11 @@ namespace polis.tjuv2
                                 prison.Add(thief);
 
                                 Confiscated.AddRange(thief.StolenGoods); // polisen kopierar hela tjuvens lista
-                                Console.SetCursorPosition(0, 27);
-                                Console.Write("Polisen har fångat en tjuv som hade tagit ");
-                                
+                                foreach (Item item in Confiscated)
+                                {
+                                    newsFeed.Add("Polisen har fångat en tjuv som hade tagit " + item.ItemName);
+                                }
+
                                 Console.WriteLine();
                                 thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
                                 //Program.numberOfArrest++;  //Kan tas bort!!
@@ -72,8 +74,11 @@ namespace polis.tjuv2
                             {
                                 city.Remove(citizen); 
                                 poorhouse.Add(citizen);
-                                Console.SetCursorPosition(0, 27);
-                                Console.Write("Polisen har träffat en medborgare utan ägodelar, tar personen till fattighuset");
+                                foreach (Item item in Confiscated)
+                                {
+                                    newsFeed.Add("Polisen har träffat en medborgare utan ägodelar, tar personen till fattighuset");
+                                }
+                             
                                 //Program.numberOfPoor++;  //Kan tas bort!!
                                 Move();
                                 Thread.Sleep(1000);
