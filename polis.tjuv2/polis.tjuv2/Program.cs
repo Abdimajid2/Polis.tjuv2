@@ -81,7 +81,8 @@ namespace polis.tjuv2
                         //(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
-                        Console.Write(person.Character);                 
+                        Console.Write(person.Character);
+                        Console.ResetColor();
 
                     }
                     if (person is Police)
@@ -91,7 +92,7 @@ namespace polis.tjuv2
                         Console.Write(person.Character);
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();                    
-
+                        Console.ResetColor();
                     }
                     if (person is Thief)
                     {
@@ -152,7 +153,7 @@ namespace polis.tjuv2
                 int b = 50;
                                 
                 Console.SetCursorPosition(0,39 );
-                Console.WriteLine("===================POOR HOUSE=====================");
+                Console.WriteLine("===================POORHOUSE=====================");
 
                 char[,] grids = new char[a, b];
 
@@ -194,15 +195,16 @@ namespace polis.tjuv2
                     if (newsFeed.Count - indexremoveNews > news)
                     {
                       
-                        Console.WriteLine(newsFeed[news] + " ");
+                        Console.Write(newsFeed[news] + " ");
                         if (newsFeed.Count >5 ) 
                         {
                             newsFeed.RemoveAt(0);
                         }
+                        Console.WriteLine();
                     }
                    
                 }
-                Console.WriteLine("======================NEWS FEED===================");
+                Console.WriteLine("==================================================");
 
                 Console.SetCursorPosition(0,51);
                 Console.WriteLine("======================STATUS======================");
@@ -229,8 +231,8 @@ namespace polis.tjuv2
                    
                 }
 
-                Console.WriteLine("==================================================");
-                Console.WriteLine("");
+                Console.WriteLine ("======================NEWS FEED===================");
+                //Console.WriteLine("");
                 Thread.Sleep(500);
                 Console.CursorVisible = false;                
 

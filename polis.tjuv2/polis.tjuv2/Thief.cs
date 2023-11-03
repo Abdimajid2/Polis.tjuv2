@@ -65,10 +65,14 @@ namespace polis.tjuv2
                             int targetitem = random.Next(0, citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
                             StolenGoods.Add(citizen.Belongings[targetitem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
                             citizen.Belongings.RemoveAt(targetitem); // tar bort en sak från medborgarens lista
-                            foreach(Item item in StolenGoods)
+                            string stolenGoods = "";
+                            string hasStolen = ",tidigare stulit: ";
+                            foreach (Item item in StolenGoods)
                             {
-                                newsFeed.Add("En tjuv har rånat en medborgare på " + item.ItemName);
+                               stolenGoods+= item.ItemName + ", ";
+                                hasStolen+= item.ItemName + ", ";
                             }
+                            newsFeed.Add("Tjuven " + this.Name + " har rånat medborgaren " + citizen.Name + " på: "+ stolenGoods + hasStolen);
                             Console.SetCursorPosition(0, 27);
                             //Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
                             //ShowList();
