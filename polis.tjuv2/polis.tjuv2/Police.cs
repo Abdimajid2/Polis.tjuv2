@@ -74,10 +74,10 @@ namespace polis.tjuv2
                             {
                                 city.Remove(citizen); 
                                 poorhouse.Add(citizen);
-                                foreach (Item item in Confiscated)
-                                {
+                              
+                                
                                     newsFeed.Add("Polisen har träffat en medborgare utan ägodelar, tar personen till fattighuset");
-                                }
+                                
                              
                                 //Program.numberOfPoor++;  //Kan tas bort!!
                                 Move();
