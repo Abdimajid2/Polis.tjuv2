@@ -67,7 +67,7 @@ namespace polis.tjuv2
                             citizen.Belongings.RemoveAt(targetitem); // tar bort en sak från medborgarens lista
                             foreach(Item item in StolenGoods)
                             {
-                                newsFeed.Add("En tjuv har rånat en medborgare på en " + item.ItemName);
+                                newsFeed.Add("En tjuv har rånat en medborgare på " + item.ItemName);
                             }
                             Console.SetCursorPosition(0, 27);
                             //Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit

@@ -24,7 +24,8 @@ namespace polis.tjuv2
 
             List<string> newsFeed = new List<string>();
 
-            for (int i = 0; i < 20; i++)
+           
+            for (int i = 0; i < 20; i++) //Antal personer i staden från början.
             {
                 city.Add(new Police());
             }
@@ -35,13 +36,10 @@ namespace polis.tjuv2
             for (int t = 0; t < 30; t++)
             {
                 city.Add(new Thief());
-            }
-
-            
+            }            
 
             while (true) 
             {
-
                 Console.Clear();
 
                //Staden
@@ -50,8 +48,9 @@ namespace polis.tjuv2
 
                 char[,] matrix = new char[y, x];
 
-                //Staden matris
-
+                //Staden matris                
+                Console.WriteLine("================================================CITY================================================");
+                Console.SetCursorPosition(0, 1);
                 for (int i = 0; i <y; i++)
                 {
 
@@ -69,24 +68,20 @@ namespace polis.tjuv2
                         //Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
 
                     }
-
                     Console.WriteLine();
                 }
 
                 foreach (Person person in city)
 
                 {
-
                     person.Move();
                     if (person is Citizen)
                     {
-                        //Console.ForegroundColor = ConsoleColor.Green;
-                        
+                        //Console.ForegroundColor = ConsoleColor.Green;                        
                         //(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
-                        Console.Write(person.Character);
-                   
+                        Console.Write(person.Character);                 
 
                     }
                     if (person is Police)
@@ -95,45 +90,35 @@ namespace polis.tjuv2
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
-                        //person.ShowList();
-                     
+                        //person.ShowList();                    
 
                     }
                     if (person is Thief)
                     {
                         //Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
-                        Console.Write(person.Character);
-                      
-                       
-
-
-                        //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
+                        Console.Write(person.Character);                
+                         //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
                         //person.ShowList();
                         //Console.ResetColor();
-
-                    }
-                  
-
-
+                    }                
                 }
+
                 for(int i = 0; i < city.Count; i++)
                 {
                     CityPrison cityPrison = city[i].Meet(city, prison,poorhouse,newsFeed);
                     city = cityPrison.City;
                     prison = cityPrison.Prison;
                     poorhouse = cityPrison.Poorhouse;
-                    newsFeed = cityPrison.NewsFeed;
-              
+                    newsFeed = cityPrison.NewsFeed;              
                 }
 
-
-                //Fängelese matris
+                //Fängelese matris                
                 int height  = 10;
                 int widht= 10;
-                    
-                Console.SetCursorPosition(0, 30);
-
+                 
+                Console.SetCursorPosition(0, 27);
+                Console.WriteLine("==PRISON==");
                 char[,] grid = new char [height, widht];
 
                 for (int i = 0; i < height; i++)
@@ -149,23 +134,23 @@ namespace polis.tjuv2
                             grid[i, j] = ' '; // Lämna tomt inne i matrisen
                         }
                         Console.Write(grid[i, j] );
-
                     }
-
                     Console.WriteLine();
                 }
 
                 foreach (Person prisoner in prison)
-
                 {
                     prisoner.Move();
                     Console.SetCursorPosition(prisoner.PrisonerLeftPosition, prisoner.PrisonerTopPosition);
                     Console.Write(prisoner.Character);
                 }
+
+                //PoorHouse matris
                 int a = 10;
                 int b = 50;
-
-                Console.SetCursorPosition(0,41 );
+                                
+                Console.SetCursorPosition(0,39 );
+                Console.WriteLine("===================POOR HOUSE=====================");
 
                 char[,] grids = new char[a, b];
 
@@ -193,11 +178,15 @@ namespace polis.tjuv2
                     Console.SetCursorPosition(poor.PoorLeftPosition, poor.PoorTopPosition);
                     Console.Write(poor.Character);
                 }
-                int index = 0;
-                int indexremoveNews = 0;
-                Console.SetCursorPosition(0, 56);
+                
+                //Newsfeed
+                int index = 0; 
+                int indexremoveNews = 0;                
+                Console.SetCursorPosition(0, 58);
+                
                 for (int news = 0; news < 5; news++)
                 {
+                    
                     if (newsFeed.Count - indexremoveNews > news)
                     {
                       
@@ -208,15 +197,19 @@ namespace polis.tjuv2
                         }
                     }
                     int breakpoint = 0;
+                    
                 }
+                Console.WriteLine("======================NEWS FEED===================");
 
-                Console.SetCursorPosition(0,52);
+                Console.SetCursorPosition(0,51);
+                Console.WriteLine("======================STATUS======================");
                 Console.WriteLine("Antal rånade medborgare: " + numbersOfRobberies);
                 Console.WriteLine("Antal gripna tjuvar: " + prison.Count);
                 Console.WriteLine("Antal personer i fattighuset: " + poorhouse.Count);
                 Console.WriteLine("Antal personer i staden: " + city.Count);
-                if (Console.KeyAvailable)
-                {
+               
+                if (Console.KeyAvailable) //Lägger till personer, tjuvar och poliser.
+                {                    
                     ConsoleKeyInfo key = Console.ReadKey();
                     switch (key.KeyChar)
                     {
@@ -230,15 +223,15 @@ namespace polis.tjuv2
                             city.Add(new Police());
                             break;
                     }
+                   
                 }
-                Thread.Sleep(500);
-                Console.CursorVisible = false;
-                
 
-            }
-            
+                Console.WriteLine("==================================================");
+                Console.WriteLine("");
+                Thread.Sleep(100);
+                Console.CursorVisible = false;                
 
-
+            }       
         }
     }
 }

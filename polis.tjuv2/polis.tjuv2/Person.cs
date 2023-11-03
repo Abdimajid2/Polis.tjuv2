@@ -75,13 +75,13 @@ namespace polis.tjuv2
             PoorTopPosition = PoorTopPosition + TopDirection ;
             PoorLeftPosition= PoorLeftPosition + LeftDirection ;
             // HÅLLER PERSONEN INNANFÖR SPELPLANEN
-            if (TopPosition < 1)
+            if (TopPosition < 2)
             {
                 TopPosition = 23;
             }
             else if (TopPosition > 23)
             {
-                TopPosition = 1;
+                TopPosition = 2;
             }
             if (LeftPosition < 1)
             {
@@ -91,33 +91,33 @@ namespace polis.tjuv2
             {
                 LeftPosition = 1;
             }
-            if (PrisonerTopPosition < 31)
+            if (PrisonerTopPosition < 29) //Rörelse i fängelse
             {
-                PrisonerTopPosition = 38;
+                PrisonerTopPosition = 35;
             }
-            else if(PrisonerTopPosition >38) 
+            else if(PrisonerTopPosition >35) 
             { 
-                PrisonerTopPosition = 31;
+                PrisonerTopPosition = 29;
             }
-            if (PrisonerLeftPosition < 1)
+            if (PrisonerLeftPosition < 2)
             {
                 PrisonerLeftPosition = 8;
             }
             else if (PrisonerLeftPosition > 8)
             {
-                PrisonerLeftPosition = 1;
+                PrisonerLeftPosition = 2;
             }
-            if (PoorTopPosition < 42)
+            if (PoorTopPosition < 41) //Rörelse i fattighuset
             {
-                PoorTopPosition = 49;
+                PoorTopPosition = 48;
             }
-            else if (PoorTopPosition > 49)
+            else if (PoorTopPosition > 48)
             {
-                PoorTopPosition =42 ;
+                PoorTopPosition =41 ;
             }
             if (PoorLeftPosition < 1)
             {
-                PoorLeftPosition = 48;
+                PoorLeftPosition = 49;
             }
             else if (PoorLeftPosition > 48)
             {
