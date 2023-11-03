@@ -72,7 +72,7 @@ namespace polis.tjuv2
                             Console.SetCursorPosition(0, 27);
                             //Console.Write("En tjuv har rånat en medborgare på en ");  // skriver ut vad tjuven har tagit
                             //ShowList();
-                            int x = 0;
+                            
                             Program.numbersOfRobberies++;
                             Move();
                             
