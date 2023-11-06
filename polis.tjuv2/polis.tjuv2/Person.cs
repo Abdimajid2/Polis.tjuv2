@@ -45,9 +45,6 @@ namespace polis.tjuv2
             PoorTopPosition = random.Next(42, 51);  //inuti poorhouse
             PoorLeftPosition = random.Next(1, 50);
             Name= Helpers.GetRandomName();
-
-
-
         }
       
         public virtual void ShowList()

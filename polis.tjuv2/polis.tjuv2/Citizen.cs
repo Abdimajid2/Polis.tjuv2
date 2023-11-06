@@ -15,8 +15,6 @@ namespace polis.tjuv2
 
         public Citizen()
         {
-
-
             Character = 'C'; // en bokstav som representerar medborgaren i staden
 
             List<Item> belongings = new List<Item>();  // här förvaras medborgarens saker i en lista.
@@ -25,45 +23,30 @@ namespace polis.tjuv2
             belongings.Add(new Item("plånbok"));
             belongings.Add(new Item("mobil"));
             belongings.Add(new Item("klocka"));
-
-
             Belongings = belongings;
 
         }
+      
 
-        public override void ShowList()
-        {
-            foreach (Item item in Belongings)
-            {
-                Console.Write(item.ItemName + " ");
-            }
-            
-        }
-          
+        //public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed)
+        //{
+        //    foreach (Person person in city)
+        //    {
+        //        if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person)
+        //        {
+                    
+        //        }
 
-
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed)
-        {
-            foreach (Person person in city)
-            {
-                if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person)
-                {
-                    if (person is Citizen)
-                    {
-                        Move();
-                    }
-                }
-
-            }
-            CityPrison cityPrison = new CityPrison();
-            cityPrison.Prison = prison;
-            cityPrison.City = city;
-            cityPrison.Poorhouse = poorhouse;
-            cityPrison.NewsFeed = newsFeed;
-            return cityPrison;
+        //    }
+        //    CityPrison cityPrison = new CityPrison();
+        //    cityPrison.Prison = prison;
+        //    cityPrison.City = city;
+        //    cityPrison.Poorhouse = poorhouse;
+        //    cityPrison.NewsFeed = newsFeed;
+        //    return cityPrison;
 
 
-        }
+        //}
 
     }
 }

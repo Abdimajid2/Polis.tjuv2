@@ -8,12 +8,7 @@ namespace polis.tjuv2
 {
     internal class Program
     {
-        public static int numbersOfRobberies = 0;
-        //public static int numberOfArrest = 0;   // Kan tas bort!!
-        //public static int numberOfPoor = 0;     //Kan tas bort!!
-     
-
-
+        public static int numbersOfRobberies = 0;  
         static void Main(string[] args)
         {
             List<Person> prison = new List<Person>(); // en lista för fängelset
@@ -23,8 +18,7 @@ namespace polis.tjuv2
             List<Person> poorhouse = new List<Person>(); // lista för personer i fattighuset
 
             List<string> newsFeed = new List<string>();
-
-           
+            
             for (int i = 0; i < 20; i++) //Antal personer i staden från början.
             {
                 city.Add(new Police());
@@ -64,9 +58,7 @@ namespace polis.tjuv2
                         {
                             matrix[i, j] = ' ';
                         }
-                        Console.Write(matrix[i, j]);
-                        //Console.Write(matrix[i, j] == '\0' ? ' ' : matrix[i, j]);
-
+                        Console.Write(matrix[i, j]);                   
                     }
                     Console.WriteLine();
                 }
@@ -231,8 +223,7 @@ namespace polis.tjuv2
                    
                 }
 
-                Console.WriteLine ("======================NEWS FEED===================");
-                //Console.WriteLine("");
+                Console.WriteLine ("======================NEWS FEED===================");               
                 Thread.Sleep(500);
                 Console.CursorVisible = false;                
 

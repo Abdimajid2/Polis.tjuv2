@@ -59,15 +59,9 @@ namespace polis.tjuv2
                                 newsFeed.Add("Polisen " + this.Name + " har fångat en tjuv " + thief.Name + " som hade tagit: " + confiscated);
                                 Console.WriteLine();
                                 thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
-                                                           //Program.numberOfArrest++;  //Kan tas bort!!
-                                                           //    Move();
-
-
+                        
                             }
-                            //else
-                            //{
-                            //    Move(); /*om polis möter på en annan polis kommer den att flytta på sig*/
-                            //}
+                           
                         }
                         if (city[i] is Citizen)
                         {
@@ -76,10 +70,7 @@ namespace polis.tjuv2
                             {
                                 city.Remove(citizen); 
                                 poorhouse.Add(citizen);
-                                newsFeed.Add("Polisen har träffat en medborgaren "+ citizen.Name+" utan ägodelar, tar personen till fattighuset");
-                                
-                             //Program.numberOfPoor++;  //Kan tas bort!!
-                                //Move();
+                                newsFeed.Add("Polisen "+ this.Name + " har träffat en medborgaren "+ citizen.Name+" utan ägodelar, tar personen till fattighuset");                                                           
                                 Thread.Sleep(1000);
                             }
 
