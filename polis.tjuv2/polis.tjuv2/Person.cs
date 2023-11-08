@@ -47,10 +47,6 @@ namespace polis.tjuv2
             Name= Helpers.GetRandomName();
         }
       
-        public virtual void ShowList()
-        {
-            
-        }
 
         public virtual CityPrison Meet(List<Person> city, List<Person> prison,List<Person>poorhouse, List<string> newsFeed) // SKICKADE IN LISTAN I METODEN
         {
