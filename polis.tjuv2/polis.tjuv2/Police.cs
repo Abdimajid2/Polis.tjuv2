@@ -19,16 +19,8 @@ namespace polis.tjuv2
 
             Character = 'P'; //en bokstav som representerar polis i staden         
         }
-
-        public override void ShowList()
-        {
-            foreach (Item item in Confiscated)
-            {
-                Console.Write(item.ItemName + " ");
-            }
-            
-        }      
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed) // skickade in listan med personer i metoden
+        
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorHouse, List<string> newsFeed) // skickade in listan med personer i metoden
         {   
             int removePerson = 0;
             for(int i = 0; i <city.Count-removePerson-1; i++) // loopar personerna i staden
@@ -43,8 +35,7 @@ namespace polis.tjuv2
                             Thief thief = (Thief)city[i]; // vad som händer när en polis möter på en tjuv
 
                             if (thief.StolenGoods.Count > 0)
-                            {
-                               
+                            {                              
                                 removePerson++;
 
                                 city.Remove(thief);
@@ -56,7 +47,7 @@ namespace polis.tjuv2
                                 {
                                    confiscated += item.ItemName + ", ";
                                 }
-                                newsFeed.Add("Polisen " + this.Name + " har fångat en tjuv " + thief.Name + " som hade tagit: " + confiscated);
+                                newsFeed.Add("Polisen " + this.Name + " har fångat tjuven " + thief.Name + " som hade tagit: " + confiscated);
                                 Console.WriteLine();
                                 thief.StolenGoods.Clear(); // polisen tömmer hela tjuvens lista
                         
@@ -69,9 +60,8 @@ namespace polis.tjuv2
                             if (citizen.Belongings.Count == 0)
                             {
                                 city.Remove(citizen); 
-                                poorhouse.Add(citizen);
-                                newsFeed.Add("Polisen "+ this.Name + " har träffat en medborgaren "+ citizen.Name+" utan ägodelar, tar personen till fattighuset");                                                           
-                                Thread.Sleep(1000);
+                                poorHouse.Add(citizen);
+                                newsFeed.Add("Polisen "+ this.Name + " har träffat en medborgaren "+ citizen.Name+" utan ägodelar, tar personen till fattighuset");                                                                                           
                             }
 
                         }
@@ -83,7 +73,7 @@ namespace polis.tjuv2
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
-            cityPrison.Poorhouse = poorhouse;
+            cityPrison.PoorHouse = poorHouse;
             cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }

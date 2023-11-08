@@ -26,27 +26,6 @@ namespace polis.tjuv2
             Belongings = belongings;
 
         }
-      
-
-        //public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed)
-        //{
-        //    foreach (Person person in city)
-        //    {
-        //        if (TopPosition == person.TopPosition && this.LeftPosition == person.LeftPosition && this != person)
-        //        {
-                    
-        //        }
-
-        //    }
-        //    CityPrison cityPrison = new CityPrison();
-        //    cityPrison.Prison = prison;
-        //    cityPrison.City = city;
-        //    cityPrison.Poorhouse = poorhouse;
-        //    cityPrison.NewsFeed = newsFeed;
-        //    return cityPrison;
-
-
-        //}
-
+ 
     }
 }

@@ -58,7 +58,7 @@ namespace polis.tjuv2
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
-            cityPrison.Poorhouse = poorhouse;
+            cityPrison.PoorHouse = poorhouse;
             cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }

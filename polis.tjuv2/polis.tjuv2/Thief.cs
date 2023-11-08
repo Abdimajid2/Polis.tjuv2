@@ -30,19 +30,7 @@ namespace polis.tjuv2
 
         }
 
-        public override void ShowList()
-        {
-            foreach (Item item in StolenGoods)
-            {
-                Console.Write(item.ItemName + " ");
-            }
-
-        }
-
-
-
-
-        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorhouse, List<string> newsFeed) // SKICKADE IN LISTAN I METODEN
+        public override CityPrison Meet(List<Person> city, List<Person> prison, List<Person> poorHouse, List<string> newsFeed) // SKICKADE IN LISTAN I METODEN
         {
 
             foreach (Person person in city)
@@ -56,35 +44,28 @@ namespace polis.tjuv2
 
                         if (citizen.Belongings.Count > 0) // KOLLAR OM CITIZEN HAR BELONGINGS KVAR
                         {
-
-
-                            int targetitem = random.Next(0, citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
-                            StolenGoods.Add(citizen.Belongings[targetitem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
-                            citizen.Belongings.RemoveAt(targetitem); // tar bort en sak från medborgarens lista
-                            string stolenGoods = "";
-                            //string hasStolen = ",tidigare stulit: ";
+                            int targetItem = random.Next(0, citizen.Belongings.Count); // randomeserar villket föremål tjuven tar från medborgaren
+                            StolenGoods.Add(citizen.Belongings[targetItem]); // KOPERIAR CITIZENS BELONGING TILL THIEF LISTA
+                            citizen.Belongings.RemoveAt(targetItem); // tar bort en sak från medborgarens lista
+                            string stolenGoods = "";                           
                             foreach (Item item in StolenGoods)
                             {
-                                stolenGoods += item.ItemName + ", ";
-                                //hasStolen+= item.ItemName + ", ";
+                                stolenGoods += item.ItemName + ", ";                               
                             }
                             newsFeed.Add("Tjuven " + this.Name + " har rånat medborgaren " + citizen.Name + " på: " + stolenGoods /*+ hasStolen*/);
                             Console.SetCursorPosition(0, 27);
-
-
                             Program.numbersOfRobberies++;
-                            
 
                         }
 
-                         
+
                     }
                 }
             }
             CityPrison cityPrison = new CityPrison();
             cityPrison.Prison = prison;
             cityPrison.City = city;
-            cityPrison.Poorhouse = poorhouse;
+            cityPrison.PoorHouse = poorHouse;
             cityPrison.NewsFeed = newsFeed;
             return cityPrison;
         }

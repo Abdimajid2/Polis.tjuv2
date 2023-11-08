@@ -15,7 +15,7 @@ namespace polis.tjuv2
 
             List<Person> city = new List<Person>(); // en lista med personer i staden
 
-            List<Person> poorhouse = new List<Person>(); // lista för personer i fattighuset
+            List<Person> poorHouse = new List<Person>(); // lista för personer i fattighuset
 
             List<string> newsFeed = new List<string>();
             
@@ -69,9 +69,7 @@ namespace polis.tjuv2
                     person.Move();
                     if (person is Citizen)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        //(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
-                        //person.ShowList();
+                        Console.ForegroundColor = ConsoleColor.Green;                        
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
                         Console.Write(person.Character);
                         Console.ResetColor();
@@ -81,28 +79,24 @@ namespace polis.tjuv2
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
-                        Console.Write(person.Character);
-                        //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
-                        //person.ShowList();                    
+                        Console.Write(person.Character);                                         
                         Console.ResetColor();
                     }
                     if (person is Thief)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.SetCursorPosition(person.LeftPosition, person.TopPosition);
-                        Console.Write(person.Character);
-                        //Console.Write(person.GetType().Name + " " + person.Name + " " + person.TopPosition + " " + person.LeftPosition + " ");
-                        //person.ShowList();
+                        Console.Write(person.Character);                       
                         Console.ResetColor();
                     }                
                 }
 
                 for(int i = 0; i < city.Count; i++)
                 {
-                    CityPrison cityPrison = city[i].Meet(city, prison,poorhouse,newsFeed);
+                    CityPrison cityPrison = city[i].Meet(city, prison,poorHouse,newsFeed);
                     city = cityPrison.City;
                     prison = cityPrison.Prison;
-                    poorhouse = cityPrison.Poorhouse;
+                    poorHouse = cityPrison.PoorHouse;
                     newsFeed = cityPrison.NewsFeed;              
                 }
 
@@ -167,7 +161,7 @@ namespace polis.tjuv2
                     }
                     Console.WriteLine();
                 }
-                foreach (Person poor in poorhouse)
+                foreach (Person poor in poorHouse)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     poor.Move();
@@ -202,7 +196,7 @@ namespace polis.tjuv2
                 Console.WriteLine("======================STATUS======================");
                 Console.WriteLine("Antal rånade medborgare: " + numbersOfRobberies);
                 Console.WriteLine("Antal gripna tjuvar: " + prison.Count);
-                Console.WriteLine("Antal personer i fattighuset: " + poorhouse.Count);
+                Console.WriteLine("Antal personer i fattighuset: " + poorHouse.Count);
                 Console.WriteLine("Antal personer i staden: " + city.Count);
                
                 if (Console.KeyAvailable) //Lägger till personer, tjuvar och poliser.
@@ -223,10 +217,10 @@ namespace polis.tjuv2
                    
                 }
 
-                Console.WriteLine ("======================NEWS FEED===================");               
+                Console.WriteLine("======================NEWS FEED===================");
                 Thread.Sleep(500);
-                Console.CursorVisible = false;                
-
+                Console.CursorVisible = false;
+                
             }       
         }
     }
