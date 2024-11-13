@@ -1,0 +1,12 @@
+
+name: demo of variables and context
+
+on: workflow_dispatch
+
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: action/checkoutv@4
+    - name: build project
+      run: dotnet build
