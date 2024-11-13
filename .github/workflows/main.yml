@@ -7,6 +7,6 @@ jobs:
   build-project:
     runs-on: ubuntu-latest
     steps:
-    - uses: action/checkoutv@4
+    - uses: actions/checkout@v4
     - name: build project
       run: dotnet build
